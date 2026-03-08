@@ -14,13 +14,16 @@ func jump():
 
 var direction = 1
 func edge():
-	if !dziura.is_colliding():
+	if !dziura.is_colliding() and is_on_floor():
 		direction *= -1
+		dziura.position.x *= -1
+		timer.start()
+		print("lolo")
 
 func wandering():
-	
 	if timer.is_stopped():
 		direction = (randi() % 2) * 2 - 1
+		dziura.position.x = abs(dziura.position.x) * direction
 		timer.start()
 	velocity.x = direction * SPEED
 	edge()
@@ -34,14 +37,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	wandering()
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis("ui_left", "ui_right")
-	#if direction:
-	#	velocity.x = direction * SPEED
-	#else:
-	#	velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 

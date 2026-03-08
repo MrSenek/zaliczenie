@@ -41,15 +41,19 @@ target_position = Vector2(53, 0)
 collision_mask = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=2016607058]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="HP" parent="." unique_id=1180813858 instance=ExtResource("3_1ke28")]
 position = Vector2(2, -7)
 
 [node name="RayCast2D2" type="RayCast2D" parent="." unique_id=2047179929]
-position = Vector2(55, -21)
-target_position = Vector2(0, 35)
+position = Vector2(55, 0)
+target_position = Vector2(0, 104)
 collision_mask = 2
+
+[node name="Line2D" type="Line2D" parent="RayCast2D2" unique_id=785635571]
+position = Vector2(-55, 0)
+points = PackedVector2Array(55, 0, 55, 104)
 
 [connection signal="death" from="HP" to="." method="_on_hp_death"]
