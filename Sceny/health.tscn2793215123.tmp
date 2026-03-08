@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b2u5wxfry5dtj"]
+
+[ext_resource type="Script" uid="uid://cpptqo7gj0uv2" path="res://Skrypty/health.gd" id="1_iwgkq"]
+[ext_resource type="Script" uid="uid://idory8syh15v" path="res://Skrypty/healthbar.gd" id="2_j0sr3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0sr3"]
+bg_color = Color(0.4133931, 0.6893493, 7.70092e-07, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 3
+
+[node name="Node" type="Node" unique_id=1591294406]
+script = ExtResource("1_iwgkq")
+MAX_HEALTH = 91
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=317428761]
+z_index = 1
+offset_left = -28.000002
+offset_top = -30.0
+offset_right = 120.92
+offset_bottom = -3.0
+scale = Vector2(0.375, 0.375)
+theme_override_styles/fill = SubResource("StyleBoxFlat_j0sr3")
+value = 50.0
+script = ExtResource("2_j0sr3")
+
+[connection signal="damage_receive" from="." to="ProgressBar" method="_on_node_damage_receive"]
