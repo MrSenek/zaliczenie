@@ -37,7 +37,7 @@ one_way_collision_margin = 50.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=978192002]
 position = Vector2(0, 13)
-target_position = Vector2(71, 0)
+target_position = Vector2(76, 0)
 collision_mask = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=2016607058]
@@ -48,7 +48,7 @@ one_shot = true
 position = Vector2(2, -7)
 
 [node name="RayCast2D2" type="RayCast2D" parent="." unique_id=2047179929]
-position = Vector2(45, 1)
+position = Vector2(55, 0)
 target_position = Vector2(0, 104)
 collision_mask = 2
 

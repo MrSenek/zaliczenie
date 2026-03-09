@@ -14,22 +14,24 @@ func jump():
 
 var direction = 1
 func edge():
+	
 	if !dziura.is_colliding() and is_on_floor():
 		direction *= -1
 		dziura.position.x *= -1
-		timer.start()
+		ray_cast_2d.target_position.x *= -2
+		timer.start(randi_range(3,8))
 		print("lolo")
 
 func wandering():
 	if timer.is_stopped():
 		direction = (randi() % 2) * 2 - 1
 		dziura.position.x = abs(dziura.position.x) * direction
+		ray_cast_2d.target_position.x = abs(ray_cast_2d.target_position.x) * direction
 		timer.start()
 	velocity.x = direction * SPEED
 	edge()
 	if  ray_cast_2d.is_colliding():
 		jump()
-	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
