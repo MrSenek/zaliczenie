@@ -34,7 +34,7 @@ func shoot():
 		add_bullet.global_position = global_position
 		add_bullet.direction = last_dir
 		add_bullet.shooter = self
-		get_tree().root.add_child(add_bullet)
+		get_tree().current_scene.add_child(add_bullet)
 		can_shoot = false
 		await get_tree().create_timer(cooldown_shoot).timeout
 		can_shoot = true

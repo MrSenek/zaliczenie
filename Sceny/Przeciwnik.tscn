@@ -52,4 +52,7 @@ position = Vector2(45, 1)
 target_position = Vector2(0, 104)
 collision_mask = 2
 
+[node name="shoot_cooldown" type="Timer" parent="." unique_id=1822437431]
+one_shot = true
+
 [connection signal="death" from="HP" to="." method="_on_hp_death"]
