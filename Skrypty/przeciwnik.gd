@@ -18,7 +18,7 @@ func edge():
 	if !dziura.is_colliding() and is_on_floor():
 		direction *= -1
 		dziura.position.x *= -1
-		ray_cast_2d.target_position.x *= -2
+		ray_cast_2d.target_position.x *= -1
 		timer.start(randi_range(3,8))
 		print("lolo")
 
