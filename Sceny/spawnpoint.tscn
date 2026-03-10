@@ -7,3 +7,6 @@ script = ExtResource("1_kppdj")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=271341651]
 gizmo_extents = 20.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1236946849]
+one_shot = true

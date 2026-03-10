@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://8ei8c1eg4r6e" path="res://Assety/1polowa.png" id="1_5bcxe"]
 [ext_resource type="PackedScene" uid="uid://h4umvvf3hq5x" path="res://Sceny/postac.tscn" id="2_5bcxe"]
 [ext_resource type="PackedScene" uid="uid://bbud38hhcnb8l" path="res://Sceny/truskawka.tscn" id="3_btved"]
-[ext_resource type="PackedScene" uid="uid://dg6jvdwsudyew" path="res://Sceny/Przeciwnik.tscn" id="4_j0xyw"]
+[ext_resource type="PackedScene" uid="uid://cvojmf8b58cdf" path="res://Sceny/spawnpoint.tscn" id="5_c1bho"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_btved"]
 
@@ -119,5 +119,6 @@ position = Vector2(35, 455)
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("3_btved")]
 position = Vector2(207, 470)
 
-[node name="CharacterBody2D" parent="." unique_id=1130073783 instance=ExtResource("4_j0xyw")]
-position = Vector2(94, 449)
+[node name="Spawnpoint" parent="." unique_id=1401195623 node_paths=PackedStringArray("player") instance=ExtResource("5_c1bho")]
+position = Vector2(171, 430)
+player = NodePath("../Postac")
