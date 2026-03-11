@@ -9,6 +9,7 @@ size = Vector2(19, 25)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1359714668]
 script = ExtResource("1_w0rc6")
+HEALTH_POINTS = 10000
 
 [node name="HP" parent="." unique_id=1591294406 instance=ExtResource("3_tlbcw")]
 

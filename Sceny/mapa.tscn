@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://h4umvvf3hq5x" path="res://Sceny/postac.tscn" id="2_5bcxe"]
 [ext_resource type="PackedScene" uid="uid://bbud38hhcnb8l" path="res://Sceny/truskawka.tscn" id="3_btved"]
 [ext_resource type="PackedScene" uid="uid://cvojmf8b58cdf" path="res://Sceny/spawnpoint.tscn" id="5_c1bho"]
+[ext_resource type="PackedScene" uid="uid://obi64alvyh1l" path="res://Sceny/HUD.tscn" id="5_is15e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_btved"]
 
@@ -93,14 +94,15 @@ texture = ExtResource("1_5bcxe")
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_c1bho"]
-physics_layer_0/collision_layer = 3
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 3
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_btved")
 sources/0 = SubResource("TileSetAtlasSource_j0xyw")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
-distance = -184.0
+distance = -169.0
 
-[node name="Node2D" type="Node2D" unique_id=911471941]
+[node name="Mapa" type="Node2D" unique_id=911471941]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=982473679]
 position = Vector2(0, 146)
@@ -108,6 +110,9 @@ tile_map_data = PackedByteArray("AAAAABUAAAAAAAEAAAAAABYAAAABAAIAAAABABUAAAABAAE
 tile_set = SubResource("TileSet_c1bho")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=148520527]
+position = Vector2(7, 52)
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2091586342]
 position = Vector2(6, 388)
@@ -115,10 +120,13 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 
 [node name="Postac" parent="." unique_id=1359714668 instance=ExtResource("2_5bcxe")]
 position = Vector2(35, 455)
+collision_mask = 16
 
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("3_btved")]
 position = Vector2(207, 470)
 
 [node name="Spawnpoint" parent="." unique_id=1401195623 node_paths=PackedStringArray("player") instance=ExtResource("5_c1bho")]
-position = Vector2(171, 430)
+position = Vector2(462, 434)
 player = NodePath("../Postac")
+
+[node name="CanvasLayer" parent="." unique_id=1419749404 instance=ExtResource("5_is15e")]
