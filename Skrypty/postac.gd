@@ -33,14 +33,15 @@ func shoot():
 		var add_bullet = bullet_scena.instantiate()
 		add_bullet.global_position = global_position
 		add_bullet.direction = last_dir
-		add_bullet.shooter = self
-		get_tree().root.add_child(add_bullet)
+		add_bullet.shooter = "Player"
+		get_tree().current_scene.add_child(add_bullet)
 		can_shoot = false
 		await get_tree().create_timer(cooldown_shoot).timeout
 		can_shoot = true
 
 func _ready() -> void:
 	SPAWN_POINT = global_position
+	self.add_to_group("Player")
 
 func _process(_delta: float) -> void:
 	pass
