@@ -7,4 +7,3 @@ func _on_node_health_changed(amount: Variant) -> void:
 		max_value = amount
 		start = 0
 	value = amount
-	print("current HP: ",value,get_parent())

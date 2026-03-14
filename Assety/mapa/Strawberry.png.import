@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://86xailu48tbt"
-path="res://.godot/imported/bullet.png-48bfd4e6debd19d2f0d025cc9eadfffc.ctex"
+uid="uid://dbitrfb5fowf3"
+path="res://.godot/imported/Strawberry.png-85e329f152b956cfe108b7b412f49e2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-48bfd4e6debd19d2f0d025cc9eadfffc.ctex"]
+source_file="res://Assety/mapa/Strawberry.png"
+dest_files=["res://.godot/imported/Strawberry.png-85e329f152b956cfe108b7b412f49e2d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvwbs2gewwbee"
-path="res://.godot/imported/karta cont.png-432b69c502e9a00971bddaf9c41cb51d.ctex"
+uid="uid://2o17l75frosh"
+path="res://.godot/imported/okno.png-faa4f86c4e8e443561bacabf87dbff3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/karta cont.png"
-dest_files=["res://.godot/imported/karta cont.png-432b69c502e9a00971bddaf9c41cb51d.ctex"]
+source_file="res://Assety/mapa/okno.png"
+dest_files=["res://.godot/imported/okno.png-faa4f86c4e8e443561bacabf87dbff3f.ctex"]
 
 [params]
 

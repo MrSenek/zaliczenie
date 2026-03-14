@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clii50fbudb6l"
-path="res://.godot/imported/karta-begining.png-5d85dc5aef3977b6535b5e3c71b25f29.ctex"
+uid="uid://to7yj15dcd5w"
+path="res://.godot/imported/Przeciwnik_003.png-0c4c72aba8e746cb9f2aa93566341302.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/karta-begining.png"
-dest_files=["res://.godot/imported/karta-begining.png-5d85dc5aef3977b6535b5e3c71b25f29.ctex"]
+source_file="res://Assety/Przeciwnik_003.png"
+dest_files=["res://.godot/imported/Przeciwnik_003.png-0c4c72aba8e746cb9f2aa93566341302.ctex"]
 
 [params]
 

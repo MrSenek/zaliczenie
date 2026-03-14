@@ -2,7 +2,7 @@ extends Area2D
 const SPEED = 200
 var direction = 1
 const damage = 50
-const cooldown = 1
+const cooldown = 0.5
 var shooter = ""
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -12,6 +12,7 @@ func _ready() -> void:
 	if direction < 0:
 		sprite_2d.flip_h = true
 		collision_shape_2d.position.x *= -1
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

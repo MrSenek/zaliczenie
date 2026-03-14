@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://khy3cwgqyr1c"
-path="res://.godot/imported/monetka.png-61930254119a4027d2cc026a7105b4e4.ctex"
+uid="uid://dx1l7hxbl320d"
+path="res://.godot/imported/Pochodnia_001.png-c3a06ef14d405dd25f4a98a91123c86b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/monetka.png"
-dest_files=["res://.godot/imported/monetka.png-61930254119a4027d2cc026a7105b4e4.ctex"]
+source_file="res://Assety/mapa/Pochodnia_001.png"
+dest_files=["res://.godot/imported/Pochodnia_001.png-c3a06ef14d405dd25f4a98a91123c86b.ctex"]
 
 [params]
 

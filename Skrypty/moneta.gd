@@ -6,7 +6,6 @@ func _ready() -> void:
 	var Throw_x = randi_range(-100,100)
 	var Throw_y = randi_range(-120,-160)
 	var Throw = Vector2(Throw_x, Throw_y)
-	print(Throw)
 	apply_central_impulse(Throw)
 
 

@@ -17,6 +17,7 @@ scale = Vector2(3, 3)
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer" unique_id=1195224240]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_28scb")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=877114513]

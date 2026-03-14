@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3b2x51efqk1d"
-path="res://.godot/imported/platforma.png-1701c5efa17165222c6fb7702382cba9.ctex"
+uid="uid://dbgwqua3ak60"
+path="res://.godot/imported/light.png-1baa195aed9f41b752592ec00ed98464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/platforma.png"
-dest_files=["res://.godot/imported/platforma.png-1701c5efa17165222c6fb7702382cba9.ctex"]
+source_file="res://Assety/mapa/light.png"
+dest_files=["res://.godot/imported/light.png-1baa195aed9f41b752592ec00ed98464.ctex"]
 
 [params]
 

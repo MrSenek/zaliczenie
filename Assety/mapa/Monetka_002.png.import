@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da1wrs3c1ettr"
-path="res://.godot/imported/bigenemy.png-865fa9da7a4dab609bd59ccd12d68dae.ctex"
+uid="uid://bhs1uka88pfa2"
+path="res://.godot/imported/Monetka_002.png-f6a861de3dadba66f78670955350800f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assety/bigenemy.png"
-dest_files=["res://.godot/imported/bigenemy.png-865fa9da7a4dab609bd59ccd12d68dae.ctex"]
+source_file="res://Assety/mapa/Monetka_002.png"
+dest_files=["res://.godot/imported/Monetka_002.png-f6a861de3dadba66f78670955350800f.ctex"]
 
 [params]
 

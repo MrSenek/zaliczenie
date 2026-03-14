@@ -2,21 +2,25 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
 @onready var dziura: RayCast2D = $RayCast2D2
-@onready var bullet_scena : PackedScene = preload("res://Sceny/bullet.tscn")
+@onready var bullet_scena : PackedScene = preload("res://Sceny/SmallFireball.tscn")
 @onready var shoot_cooldown: Timer = $shoot_cooldown
 @onready var monetka : PackedScene = preload("res://Sceny/Moneta.tscn")
-const SPEED = 100.0
-const JUMP_VELOCITY = -400.0
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+const SPEED = 75.0
+const JUMP_VELOCITY = -250.0
 @export var HEALTH_POINTS: int = 30
 var is_dead = false
 
 func shoot():
 	if shoot_cooldown.is_stopped():
-		var add_bullet = bullet_scena.instantiate()
-		add_bullet.global_position = global_position
-		add_bullet.direction = direction
-		add_bullet.shooter = "Enemy"
-		get_tree().current_scene.add_child(add_bullet)
+		for i in range(2):
+			var add_bullet = bullet_scena.instantiate()
+			add_bullet.global_position = global_position
+			add_bullet.global_position.y += randi_range(-2,2)
+			add_bullet.direction = direction
+			add_bullet.shooter = "Enemy"
+			get_tree().current_scene.add_child(add_bullet)
 		shoot_cooldown.start()
 
 
@@ -32,7 +36,6 @@ func edge():
 		dziura.position.x *= -1
 		ray_cast_2d.target_position.x *= -1
 		timer.start(randi_range(3,8))
-		print("DZIURA!!!")
 
 func wandering():
 	if timer.is_stopped():
@@ -63,6 +66,7 @@ func _on_hp_death() -> void:
 	if is_dead:
 		return
 	else:
+		animated_sprite_2d.play("dead")
 		is_dead = true
 		collision_layer = 0
 		collision_layer = 0
