@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dqnjo7sjj10ep"]
+
+[ext_resource type="Script" uid="uid://b0mfohjq0d8mr" path="res://scenes/entities/universal/weapons/fireball.gd" id="1_djvif"]
+[ext_resource type="Texture2D" uid="uid://dbgwqua3ak60" path="res://scenes/main_map/light.png" id="2_v4vcj"]
+[ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="3_bcp2c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkb82"]
+radius = 11.0
+
+[node name="Area2D" type="Area2D" unique_id=1299283888]
+collision_mask = 3
+script = ExtResource("1_djvif")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=375194232]
+position = Vector2(6, -2.0000014)
+scale = Vector2(0.9921875, 0.9609375)
+color = Color(1, 1, 0, 1)
+texture = ExtResource("2_v4vcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1098665296]
+position = Vector2(0, -3)
+texture = ExtResource("3_bcp2c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1806236798]
+position = Vector2(6, -2)
+shape = SubResource("CircleShape2D_pkb82")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
