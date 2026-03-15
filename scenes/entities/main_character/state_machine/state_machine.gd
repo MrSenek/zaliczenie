@@ -9,11 +9,12 @@ var states: Dictionary = {}
 
 
 func _ready() -> void:
+	
 	#Register all child states
 	for child in get_children():
 		states[child.name.to_lower()] = child
 		child.state_machine = self
-		
+		child.character = get_parent()
 	
 	#Start with initial state
 	if initial_state:

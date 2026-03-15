@@ -8,24 +8,6 @@ const JUMP_VELOCITY = -400.0
 var SPAWN_POINT
 
 
-
-#skakanie
-var has_jumped = false
-func jump():
-	if is_on_floor():
-		has_jumped   = false
-
-
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-
-	elif Input.is_action_just_pressed("ui_accept") and has_jumped == false:
-		velocity.y = JUMP_VELOCITY*0.8
-		has_jumped = true
-
-
-
 #zmienne pocisku
 var last_dir = 1
 var can_shoot = true
@@ -54,28 +36,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	shoot()
 	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump
-	jump()
-	var direction := Input.get_axis("ui_left", "ui_right")
-
-	
-	if direction < 0:
-		sprite_2d.flip_h = true
-	elif direction > 0:
-		sprite_2d.flip_h = false
-	
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-
-
 func _on_hp_death() -> void:
 		global_position = SPAWN_POINT
 		get_node("HP").CURRENT_HEALTH = HEALTH_POINTS

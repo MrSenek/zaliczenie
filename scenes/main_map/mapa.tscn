@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://h4umvvf3hq5x" path="res://scenes/entities/main_character/character.tscn" id="3_fmfh6"]
 [ext_resource type="PackedScene" uid="uid://bbud38hhcnb8l" path="res://scenes/entities/collectables/truskawka.tscn" id="4_bp082"]
 [ext_resource type="Script" uid="uid://5weskl28l2ye" path="res://scenes/entities/universal/stats.gd" id="4_dqeuc"]
-[ext_resource type="Script" uid="uid://c5dirk1s2q0qq" path="res://scenes/main_map/state_machine.gd" id="5_7fiaw"]
+[ext_resource type="Script" uid="uid://c5dirk1s2q0qq" path="res://scenes/entities/main_character/state_machine/state_machine.gd" id="5_7fiaw"]
 [ext_resource type="PackedScene" uid="uid://obi64alvyh1l" path="res://scenes/entities/main_character/HUD.tscn" id="5_87tx7"]
+[ext_resource type="Script" uid="uid://ca6ho6sa8d3gm" path="res://scenes/entities/main_character/state_machine/idle_state.gd" id="6_js2ff"]
 [ext_resource type="PackedScene" uid="uid://cvojmf8b58cdf" path="res://scenes/entities/enemies/spawnpoint.tscn" id="6_pc0c0"]
+[ext_resource type="Script" uid="uid://b4kowvrx5twy3" path="res://scenes/entities/main_character/state_machine/walk_state.gd" id="7_vt3nt"]
+[ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="8_jxony"]
+[ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="9_bahuv"]
+[ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/node.gd" id="10_na1hj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_btved"]
 
@@ -251,6 +256,7 @@ texture = SubResource("CompressedTexture2D_is15e")
 8:10/0 = 0
 9:10/0 = 0
 10:10/0 = 0
+6:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2v2i"]
 texture = ExtResource("1_bcv56")
@@ -274,7 +280,7 @@ sources/2 = SubResource("TileSetAtlasSource_i2v2i")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
 distance = -148.0
 
-[sub_resource type="Resource" id="Resource_7fiaw"]
+[sub_resource type="Resource" id="Resource_jxony"]
 resource_local_to_scene = true
 script = ExtResource("4_dqeuc")
 max_health = 1000
@@ -291,7 +297,7 @@ tile_map_data = PackedByteArray("AAD6//b/AAADAAEAAAD6//f/AAADAAIAAAD6//j/AAADAAM
 tile_set = SubResource("TileSet_c1bho")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=2141756232]
-tile_map_data = PackedByteArray("AAAIABoAAQADAAkAAAAMABoAAQADAAkAAAAQABoAAQADAAkAAAAUABoAAQADAAkAAAABAB0AAQADAAcAAAACAB0AAQAEAAcAAAADAB0AAQAFAAcAAAAEAB0AAQADAAcAAAAFAB0AAQAEAAcAAAAGAB0AAQAFAAcAAAAHAB0AAQADAAcAAAAIAB0AAQAEAAcAAAAJAB0AAQAFAAcAAAAKAB0AAQADAAcAAAALAB0AAQAEAAcAAAAMAB0AAQAFAAcAAAANAB0AAQADAAcAAAAOAB0AAQAEAAcAAAAPAB0AAQAFAAcAAAAQAB0AAQADAAcAAAARAB0AAQAEAAcAAAASAB0AAQAFAAcAAAATAB0AAQADAAcAAAAUAB0AAQAEAAcAAAAVAB0AAQAFAAcAAAAWAB0AAQADAAcAAAAXAB0AAQAEAAcAAAAYAB0AAQAFAAcAAAAZAB0AAQADAAcAAAAaAB0AAQAEAAcAAAAbAB0AAQAPAAYAAAAbABwAAQAHAAUAAAAcABwAAQAEAAUAAAAdABwAAQAFAAUAAAAeABwAAQADAAUAAAAfABwAAQAEAAUAAAAgABwAAQAFAAUAAAAhABwAAQADAAUAAAAiABwAAQAEAAUAAAAjABwAAQAFAAUAAAAkABwAAQADAAUAAAAlABwAAQAEAAUAAAAmABwAAQAFAAUAAAAOABYAAQAHAAUAAAAPABYAAQAEAAUAAAAQABYAAQAFAAUAAAARABYAAQADAAUAAAASABYAAQAEAAUAAAATABYAAQAFAAUAAAAUABYAAQADAAUAAAAVABYAAQAEAAUAAAAWABYAAQAFAAUAAAAXABYAAQADAAUAAAAYABYAAQAEAAUAAAAZABYAAQAJAAUAAAAKABoAAgAAAAAAAAAOABoAAgAAAAAAAAASABoAAgAAAAAAAAAWABoAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAIABoAAQADAAkAAAAMABoAAQADAAkAAAAQABoAAQADAAkAAAAUABoAAQADAAkAAAABAB0AAQADAAcAAAACAB0AAQAEAAcAAAADAB0AAQAFAAcAAAAEAB0AAQADAAcAAAAFAB0AAQAEAAcAAAAGAB0AAQAFAAcAAAAHAB0AAQADAAcAAAAIAB0AAQAEAAcAAAAJAB0AAQAFAAcAAAAKAB0AAQADAAcAAAALAB0AAQAEAAcAAAAMAB0AAQAFAAcAAAANAB0AAQADAAcAAAAOAB0AAQAEAAcAAAAPAB0AAQAFAAcAAAAQAB0AAQADAAcAAAARAB0AAQAEAAcAAAASAB0AAQAFAAcAAAATAB0AAQADAAcAAAAUAB0AAQAEAAcAAAAVAB0AAQAFAAcAAAAWAB0AAQADAAcAAAAXAB0AAQAEAAcAAAAYAB0AAQAFAAcAAAAZAB0AAQADAAcAAAAaAB0AAQAEAAcAAAAbAB0AAQAPAAYAAAAbABwAAQAHAAUAAAAcABwAAQAEAAUAAAAdABwAAQAFAAUAAAAeABwAAQADAAUAAAAfABwAAQAEAAUAAAAgABwAAQAFAAUAAAAhABwAAQADAAUAAAAiABwAAQAEAAUAAAAjABwAAQAFAAUAAAAkABwAAQADAAUAAAAlABwAAQAEAAUAAAAmABwAAQAFAAUAAAAOABYAAQAHAAUAAAAPABYAAQAEAAUAAAAQABYAAQAFAAUAAAARABYAAQADAAUAAAASABYAAQAEAAUAAAATABYAAQAFAAUAAAAUABYAAQADAAUAAAAVABYAAQAEAAUAAAAWABYAAQAFAAUAAAAXABYAAQADAAUAAAAYABYAAQAEAAUAAAAZABYAAQAJAAUAAAAKABoAAgAAAAAAAAAOABoAAgAAAAAAAAASABoAAgAAAAAAAAAWABoAAgAAAAAAAAAnAB0AAQADAAcAAAAoAB0AAQAEAAcAAAApAB0AAQAFAAcAAAAqAB0AAQADAAcAAAArAB0AAQAEAAcAAAAsAB0AAQAFAAcAAAAtAB0AAQADAAcAAAAuAB0AAQAEAAcAAAAvAB0AAQAFAAcAAAAwAB0AAQADAAcAAAAxAB0AAQAEAAcAAAAyAB0AAQAFAAcAAAAzAB0AAQADAAcAAAA0AB0AAQAEAAcAAAA1AB0AAQAFAAcAAAAsABYAAQADAAcAAAAtABYAAQAEAAcAAAAuABYAAQAFAAcAAAAvABYAAQADAAcAAAAwABYAAQAEAAcAAAAxABYAAQAFAAcAAAAyABYAAQADAAcAAAAzABYAAQAEAAcAAAA0ABYAAQAFAAcAAAA1ABYAAQADAAcAAAA2ABYAAQAEAAcAAAA3ABYAAQAFAAcAAAArABYAAQAHAAcAAAA4ABYAAQAJAAcAAAA=")
 tile_set = SubResource("TileSet_h2ikh")
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMapLayer2" unique_id=860776036]
@@ -315,15 +321,34 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("3_fmfh6")]
 position = Vector2(35, 455)
 collision_mask = 16
-stats = SubResource("Resource_7fiaw")
+stats = SubResource("Resource_jxony")
 
-[node name="state_machine" type="Node" parent="main_character" unique_id=2141826650]
+[node name="state_machine" type="Node" parent="main_character" unique_id=2141826650 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fiaw")
+initial_state = NodePath("idle_state")
+
+[node name="idle_state" type="Node" parent="main_character/state_machine" unique_id=1171553688]
+script = ExtResource("6_js2ff")
+
+[node name="walk_state" type="Node" parent="main_character/state_machine" unique_id=1754073532]
+script = ExtResource("7_vt3nt")
+
+[node name="jump_state" type="Node" parent="main_character/state_machine" unique_id=331704928]
+script = ExtResource("8_jxony")
+
+[node name="weapon_state_machine" type="Node" parent="main_character" unique_id=1590273479]
+script = ExtResource("9_bahuv")
+
+[node name="Node" type="Node" parent="main_character/weapon_state_machine" unique_id=1998017176]
+script = ExtResource("10_na1hj")
 
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("4_bp082")]
 position = Vector2(197, 447)
 
 [node name="CanvasLayer" parent="." unique_id=1419749404 instance=ExtResource("5_87tx7")]
 
-[node name="Node2D" parent="." unique_id=1401195623 instance=ExtResource("6_pc0c0")]
+[node name="Spawn_Point" parent="." unique_id=1401195623 instance=ExtResource("6_pc0c0")]
 position = Vector2(278, 448)
+
+[node name="Spawn_Point2" parent="." unique_id=558758598 instance=ExtResource("6_pc0c0")]
+position = Vector2(756, 433)

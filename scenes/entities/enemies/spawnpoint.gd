@@ -7,7 +7,7 @@ var current_enemies : int;
 func spawn_enemy():
 	var player_location = player.global_position
 	var distance_to_player = player_location.x - global_position.x
-	if abs(distance_to_player) > 50 and timer.is_stopped() and current_enemies <= 1:
+	if abs(distance_to_player) > 50 and timer.is_stopped() and current_enemies <= 2:
 		
 		var create_enemy = enemy_scene.instantiate()
 		add_child(create_enemy)
