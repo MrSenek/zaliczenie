@@ -270,11 +270,11 @@ script = ExtResource("7_vt3nt")
 [node name="jump_state" type="Node" parent="main_character/state_machine" unique_id=331704928]
 script = ExtResource("8_jxony")
 
-[node name="weapon_state_machine" type="Node2D" parent="main_character" unique_id=1501569509 node_paths=PackedStringArray("initial_state")]
+[node name="weapon_state_machine" type="Node" parent="main_character" unique_id=1590273479 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("9_bahuv")
 initial_state = NodePath("fireball")
 
-[node name="fireball" type="Node2D" parent="main_character/weapon_state_machine" unique_id=970976620]
+[node name="fireball" type="Node" parent="main_character/weapon_state_machine" unique_id=1998017176]
 script = ExtResource("10_na1hj")
 
 [node name="Sprite2D" type="Sprite2D" parent="main_character/weapon_state_machine/fireball" unique_id=1330411576]

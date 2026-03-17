@@ -2,14 +2,21 @@ extends Node
 
 class_name Weapon_State
 
-func Enter():
+var state_machine: StateMachine
+var weapon_state_machine: Weapon_State_Machine
+var character: CharacterBody2D
+
+func enter():
 	pass
 
-func Exit():
+func exit():
 	pass
 
-func Update(_delta: float):
+func update(delta: float):
 	pass
 
-func Physics_Update(_delta: float):
-	pass 
+func physics_update(delta: float):
+	pass
+
+func handle_input(event: InputEvent):
+	pass
