@@ -37,16 +37,16 @@ func _input(event: InputEvent) -> void:
 		current_state.handle_input(event)
 	
 	if event.is_action_pressed("strzal"):
-		
+		pass
 	
 func change_state(new_state_name: String) -> void:
 	if current_state:
 		current_state.exit()
-		
+
 	current_state = states.get(new_state_name.to_lower())
-	
+
 	if current_state:
 		current_state.enter()
 
-func change_weapon():
-	change_state("fireball")
+
+	

@@ -15,9 +15,6 @@
 [ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="9_bahuv"]
 [ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="10_na1hj"]
 [ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="12_ct8lj"]
-[ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="13_2y0gd"]
-[ext_resource type="Texture2D" uid="uid://dha7usq7m0348" path="res://scenes/entities/enemies/enim2.png" id="13_jqrd4"]
-[ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="14_vh3e7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_btved"]
 
@@ -217,15 +214,12 @@ sources/1 = SubResource("TileSetAtlasSource_mttvy")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
 distance = -148.0
 
-[sub_resource type="Resource" id="Resource_vh3e7"]
+[sub_resource type="Resource" id="Resource_ct8lj"]
 resource_local_to_scene = true
 script = ExtResource("4_dqeuc")
-max_health = 100000
+max_health = 1000
 attack = 3
 metadata/_custom_type_script = "uid://5weskl28l2ye"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh3e7"]
-size = Vector2(20, 10)
 
 [node name="Mapa" type="Node2D" unique_id=911471941]
 
@@ -237,7 +231,7 @@ tile_map_data = PackedByteArray("AAD6//b/AAADAAEAAAD6//f/AAADAAIAAAD6//j/AAADAAM
 tile_set = SubResource("TileSet_c1bho")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=2141756232]
-tile_map_data = PackedByteArray("AAAIABoAAQADAAkAAAAMABoAAQADAAkAAAAQABoAAQADAAkAAAAUABoAAQADAAkAAAABAB0AAQADAAcAAAACAB0AAQAEAAcAAAADAB0AAQAFAAcAAAAEAB0AAQADAAcAAAAFAB0AAQAEAAcAAAAGAB0AAQAFAAcAAAAHAB0AAQADAAcAAAAIAB0AAQAEAAcAAAAJAB0AAQAFAAcAAAAKAB0AAQADAAcAAAALAB0AAQAEAAcAAAAMAB0AAQAFAAcAAAANAB0AAQADAAcAAAAOAB0AAQAEAAcAAAAPAB0AAQAFAAcAAAAQAB0AAQADAAcAAAARAB0AAQAEAAcAAAASAB0AAQAFAAcAAAATAB0AAQADAAcAAAAUAB0AAQAEAAcAAAAVAB0AAQAFAAcAAAAWAB0AAQADAAcAAAAXAB0AAQAEAAcAAAAYAB0AAQAFAAcAAAAZAB0AAQADAAcAAAAaAB0AAQAEAAcAAAAbAB0AAQAPAAYAAAAbABwAAQAHAAUAAAAcABwAAQAEAAUAAAAdABwAAQAFAAUAAAAeABwAAQADAAUAAAAfABwAAQAEAAUAAAAgABwAAQAFAAUAAAAhABwAAQADAAUAAAAiABwAAQAEAAUAAAAjABwAAQAFAAUAAAAkABwAAQADAAUAAAAlABwAAQAEAAUAAAAmABwAAQAFAAUAAAAOABYAAQAHAAUAAAAPABYAAQAEAAUAAAAQABYAAQAFAAUAAAARABYAAQADAAUAAAASABYAAQAEAAUAAAATABYAAQAFAAUAAAAUABYAAQADAAUAAAAVABYAAQAEAAUAAAAWABYAAQAFAAUAAAAXABYAAQADAAUAAAAYABYAAQAEAAUAAAAZABYAAQAJAAUAAAAKABoAAgAAAAAAAAAOABoAAgAAAAAAAAASABoAAgAAAAAAAAAWABoAAgAAAAAAAAAnAB0AAQADAAcAAAAoAB0AAQAEAAcAAAApAB0AAQAFAAcAAAAqAB0AAQADAAcAAAArAB0AAQAEAAcAAAAsAB0AAQAFAAcAAAAtAB0AAQADAAcAAAAuAB0AAQAEAAcAAAAvAB0AAQAFAAcAAAAwAB0AAQADAAcAAAAxAB0AAQAEAAcAAAAyAB0AAQAFAAcAAAAzAB0AAQADAAcAAAA0AB0AAQAEAAcAAAA1AB0AAQAFAAcAAAAsABYAAQADAAcAAAAtABYAAQAEAAcAAAAuABYAAQAFAAcAAAAvABYAAQADAAcAAAAwABYAAQAEAAcAAAAxABYAAQAFAAcAAAAyABYAAQADAAcAAAAzABYAAQAEAAcAAAA0ABYAAQAFAAcAAAA1ABYAAQADAAcAAAA2ABYAAQAEAAcAAAA3ABYAAQAFAAcAAAArABYAAQAHAAcAAAA4ABYAAQAJAAcAAAADABoAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAIABoAAQADAAkAAAAMABoAAQADAAkAAAAQABoAAQADAAkAAAAUABoAAQADAAkAAAABAB0AAQADAAcAAAACAB0AAQAEAAcAAAADAB0AAQAFAAcAAAAEAB0AAQADAAcAAAAFAB0AAQAEAAcAAAAGAB0AAQAFAAcAAAAHAB0AAQADAAcAAAAIAB0AAQAEAAcAAAAJAB0AAQAFAAcAAAAKAB0AAQADAAcAAAALAB0AAQAEAAcAAAAMAB0AAQAFAAcAAAANAB0AAQADAAcAAAAOAB0AAQAEAAcAAAAPAB0AAQAFAAcAAAAQAB0AAQADAAcAAAARAB0AAQAEAAcAAAASAB0AAQAFAAcAAAATAB0AAQADAAcAAAAUAB0AAQAEAAcAAAAVAB0AAQAFAAcAAAAWAB0AAQADAAcAAAAXAB0AAQAEAAcAAAAYAB0AAQAFAAcAAAAZAB0AAQADAAcAAAAaAB0AAQAEAAcAAAAbAB0AAQAPAAYAAAAbABwAAQAHAAUAAAAcABwAAQAEAAUAAAAdABwAAQAFAAUAAAAeABwAAQADAAUAAAAfABwAAQAEAAUAAAAgABwAAQAFAAUAAAAhABwAAQADAAUAAAAiABwAAQAEAAUAAAAjABwAAQAFAAUAAAAkABwAAQADAAUAAAAlABwAAQAEAAUAAAAmABwAAQAFAAUAAAAOABYAAQAHAAUAAAAPABYAAQAEAAUAAAAQABYAAQAFAAUAAAARABYAAQADAAUAAAASABYAAQAEAAUAAAATABYAAQAFAAUAAAAUABYAAQADAAUAAAAVABYAAQAEAAUAAAAWABYAAQAFAAUAAAAXABYAAQADAAUAAAAYABYAAQAEAAUAAAAZABYAAQAJAAUAAAAKABoAAgAAAAAAAAAOABoAAgAAAAAAAAASABoAAgAAAAAAAAAWABoAAgAAAAAAAAAnAB0AAQADAAcAAAAoAB0AAQAEAAcAAAApAB0AAQAFAAcAAAAqAB0AAQADAAcAAAArAB0AAQAEAAcAAAAsAB0AAQAFAAcAAAAtAB0AAQADAAcAAAAuAB0AAQAEAAcAAAAvAB0AAQAFAAcAAAAwAB0AAQADAAcAAAAxAB0AAQAEAAcAAAAyAB0AAQAFAAcAAAAzAB0AAQADAAcAAAA0AB0AAQAEAAcAAAA1AB0AAQAFAAcAAAAsABYAAQADAAcAAAAtABYAAQAEAAcAAAAuABYAAQAFAAcAAAAvABYAAQADAAcAAAAwABYAAQAEAAcAAAAxABYAAQAFAAcAAAAyABYAAQADAAcAAAAzABYAAQAEAAcAAAA0ABYAAQAFAAcAAAA1ABYAAQADAAcAAAA2ABYAAQAEAAcAAAA3ABYAAQAFAAcAAAArABYAAQAHAAcAAAA4ABYAAQAJAAcAAAA=")
 tile_set = SubResource("TileSet_h2ikh")
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMapLayer2" unique_id=860776036]
@@ -261,7 +255,7 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("3_fmfh6")]
 position = Vector2(35, 455)
 collision_mask = 16
-stats = SubResource("Resource_vh3e7")
+stats = SubResource("Resource_ct8lj")
 
 [node name="state_machine" type="Node" parent="main_character" unique_id=2141826650 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fiaw")
@@ -290,26 +284,6 @@ rotation = 1.5707964
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_ct8lj")
 
-[node name="electro" type="Node2D" parent="main_character/weapon_state_machine" unique_id=738920464]
-script = ExtResource("13_2y0gd")
-
-[node name="lightning_line" type="Line2D" parent="main_character/weapon_state_machine/electro" unique_id=267570076]
-visible = false
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-points = PackedVector2Array(12, 0, 144, 0)
-width = 2.0
-default_color = Color(0.39607844, 1, 1, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("14_vh3e7")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="main_character/weapon_state_machine/electro" unique_id=814026024]
-shape = SubResource("RectangleShape2D_vh3e7")
-target_position = Vector2(150, 0)
-max_results = 50
-collision_mask = 18
-collide_with_areas = true
-
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("4_bp082")]
 position = Vector2(197, 447)
 
@@ -318,6 +292,5 @@ position = Vector2(197, 447)
 [node name="Spawn_Point" parent="." unique_id=1401195623 instance=ExtResource("6_pc0c0")]
 position = Vector2(278, 448)
 
-[node name="Enim2" type="Sprite2D" parent="." unique_id=1127442216]
-position = Vector2(535, 405)
-texture = ExtResource("13_jqrd4")
+[node name="Spawn_Point2" parent="." unique_id=558758598 instance=ExtResource("6_pc0c0")]
+position = Vector2(756, 433)

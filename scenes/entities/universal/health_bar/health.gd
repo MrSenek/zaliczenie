@@ -22,7 +22,6 @@ func get_hp(amount):
 	
 	health_changed.emit(CURRENT_HEALTH)
 
-
 func _ready() -> void:
 	MAX_HEALTH = get_parent().stats.max_health
 	CURRENT_HEALTH = MAX_HEALTH

@@ -1,33 +1,21 @@
 [gd_scene format=3 uid="uid://b2u5wxfry5dtj"]
 
 [ext_resource type="Script" uid="uid://cpptqo7gj0uv2" path="res://scenes/entities/universal/health_bar/health.gd" id="1_ueyo1"]
-[ext_resource type="Script" uid="uid://idory8syh15v" path="res://scenes/entities/universal/health_bar/healthbar.gd" id="2_mdmt0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0sr3"]
-bg_color = Color(0.4133931, 0.6893493, 7.70092e-07, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_size = 3
+[ext_resource type="Texture2D" uid="uid://cocrdn4rg3d7p" path="res://scenes/entities/universal/health_bar/health-pusty.png" id="3_4rsd7"]
+[ext_resource type="Texture2D" uid="uid://dx8hjkqblqwk6" path="res://scenes/entities/universal/health_bar/health-ziel.png" id="3_udh4e"]
+[ext_resource type="Script" uid="uid://cg7qb14ckfja5" path="res://scenes/entities/universal/health_bar/texture_progress_bar.gd" id="5_daq23"]
 
 [node name="Node" type="Node2D" unique_id=1180813858]
 script = ExtResource("1_ueyo1")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=317428761]
-z_index = 1
-offset_left = -28.000002
-offset_top = -30.0
-offset_right = 120.92
-offset_bottom = -3.0
-scale = Vector2(0.375, 0.375)
-theme_override_styles/fill = SubResource("StyleBoxFlat_j0sr3")
-value = 50.0
-script = ExtResource("2_mdmt0")
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=114951356]
+offset_left = -32.0
+offset_top = -34.0
+offset_right = 32.0
+offset_bottom = -14.0
+value = 100.0
+texture_over = ExtResource("3_4rsd7")
+texture_progress = ExtResource("3_udh4e")
+script = ExtResource("5_daq23")
 
-[connection signal="health_changed" from="." to="ProgressBar" method="_on_node_health_changed"]
+[connection signal="health_changed" from="." to="TextureProgressBar" method="_on_node_health_changed"]

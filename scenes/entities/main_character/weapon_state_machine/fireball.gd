@@ -1,7 +1,7 @@
 extends Weapon_State
 class_name fireball
 
-
+@onready var bullet_scena : PackedScene = preload("res://scenes/entities/universal/weapons/fireball.tscn")
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 func enter():
@@ -15,9 +15,35 @@ func exit():
 func update(_delta):
 	if character.sprite_2d.flip_h:
 		sprite_2d.position.x = 15
-		sprite_2d.flip_h = true
-		
+		sprite_2d.flip_h = false
+		sprite_2d.rotation = (-PI / 2)
+
 	else:
 		sprite_2d.position.x = -15
-		sprite_2d.flip_h = false
+		sprite_2d.flip_h = true
 		sprite_2d.rotation = (PI / 2)
+
+func handle_input(event: InputEvent):
+	shoot()
+	if Input.is_action_just_pressed("Weapon 2"):
+		weapon_state_machine.change_state("electro")
+
+
+var last_dir = 1
+var can_shoot = true
+#strzelanie
+func shoot():
+	var dir = Input.get_axis("ui_left","ui_right")
+	if dir != 0:
+		last_dir = dir
+	if Input.is_action_just_pressed("strzal") and can_shoot:
+		var add_bullet = bullet_scena.instantiate()
+		var cooldown_shoot = add_bullet.cooldown
+		add_bullet.global_position = character.global_position
+		add_bullet.direction = last_dir
+		add_bullet.shooter = "Player"
+		add_bullet.damage *= character.stats.attack
+		get_tree().current_scene.add_child(add_bullet)
+		can_shoot = false
+		await get_tree().create_timer(cooldown_shoot).timeout
+		can_shoot = true
