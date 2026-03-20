@@ -224,8 +224,8 @@ max_health = 100000
 attack = 3
 metadata/_custom_type_script = "uid://5weskl28l2ye"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh3e7"]
-size = Vector2(20, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxk2j"]
+size = Vector2(150, 4)
 
 [node name="Mapa" type="Node2D" unique_id=911471941]
 
@@ -303,12 +303,16 @@ begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("14_vh3e7")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="main_character/weapon_state_machine/electro" unique_id=814026024]
-shape = SubResource("RectangleShape2D_vh3e7")
-target_position = Vector2(150, 0)
-max_results = 50
+[node name="Area2D" type="Area2D" parent="main_character/weapon_state_machine/electro" unique_id=440192899]
+position = Vector2(86, 0)
 collision_mask = 18
-collide_with_areas = true
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_character/weapon_state_machine/electro/Area2D" unique_id=1944263471]
+shape = SubResource("RectangleShape2D_dxk2j")
+
+[node name="timer_DOT" type="Timer" parent="main_character/weapon_state_machine/electro/Area2D" unique_id=80776267]
+wait_time = 0.1
 
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("4_bp082")]
 position = Vector2(197, 447)
@@ -321,3 +325,6 @@ position = Vector2(278, 448)
 [node name="Enim2" type="Sprite2D" parent="." unique_id=1127442216]
 position = Vector2(535, 405)
 texture = ExtResource("13_jqrd4")
+
+[connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]

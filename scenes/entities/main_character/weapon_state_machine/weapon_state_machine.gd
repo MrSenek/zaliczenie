@@ -36,8 +36,10 @@ func _input(event: InputEvent) -> void:
 	if current_state:
 		current_state.handle_input(event)
 	
-	if event.is_action_pressed("strzal"):
-		pass
+	if event.is_action_pressed("Weapon 1"):
+		change_state("fireball")
+	elif event.is_action_pressed("Weapon 2"):
+		change_state("electro")
 	
 func change_state(new_state_name: String) -> void:
 	if current_state:

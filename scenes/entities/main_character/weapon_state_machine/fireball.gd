@@ -25,9 +25,6 @@ func update(_delta):
 
 func handle_input(event: InputEvent):
 	shoot()
-	if Input.is_action_just_pressed("Weapon 2"):
-		weapon_state_machine.change_state("electro")
-
 
 var last_dir = 1
 var can_shoot = true

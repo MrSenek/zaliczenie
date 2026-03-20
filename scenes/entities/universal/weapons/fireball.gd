@@ -22,4 +22,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group(shooter):
 		if body.has_node("HP"):
 			body.get_node("HP").damage_taken(damage)
+			queue_free()
 	
