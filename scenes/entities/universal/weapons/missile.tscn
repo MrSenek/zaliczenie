@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://c4i3y4thhgyf3" path="res://scenes/entities/universal/weapons/missile.gd" id="1_8mhxp"]
 [ext_resource type="Texture2D" uid="uid://cn2sr88oaf2au" path="res://scenes/entities/universal/weapons/missile.png" id="2_euuab"]
+[ext_resource type="PackedScene" uid="uid://blt7cskki0gkb" path="res://scenes/entities/universal/explosion.tscn" id="2_ratl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ratl6"]
 size = Vector2(32, 15)
 
 [node name="Area2D" type="Area2D" unique_id=449487397]
+collision_mask = 3
 script = ExtResource("1_8mhxp")
+explosion = ExtResource("2_ratl6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=658240429]
 texture = ExtResource("2_euuab")
@@ -15,3 +18,5 @@ texture = ExtResource("2_euuab")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377268841]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ratl6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

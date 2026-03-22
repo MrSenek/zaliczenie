@@ -6,12 +6,15 @@ extends CharacterBody2D
 @onready var shoot_cooldown: Timer = $shoot_cooldown
 @onready var monetka : PackedScene = preload("res://scenes/entities/collectables/Moneta.tscn")
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
-
 @export var stats: Stats
+
+
 const SPEED = 75.0
 const JUMP_VELOCITY = -250.0
 var is_dead = false
+
+func _ready() -> void:
+	self.add_to_group("enemy")
 
 func shoot():
 	if shoot_cooldown.is_stopped():
@@ -21,7 +24,7 @@ func shoot():
 			add_bullet.global_position = global_position
 			add_bullet.global_position.y += randi_range(2,5) * [-1,1].pick_random()
 			add_bullet.direction = direction
-			add_bullet.shooter = "Enemy"
+			add_bullet.shooter = "enemy"
 			add_bullet.damage *= stats.attack
 			get_tree().current_scene.add_child(add_bullet)
 			if i < 2:

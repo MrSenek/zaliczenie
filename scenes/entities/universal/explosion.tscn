@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://blt7cskki0gkb"]
+
+[ext_resource type="Script" uid="uid://b3pevtdlo2p3j" path="res://scenes/entities/universal/explosion.gd" id="1_1wm5j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvshy"]
+radius = 44.181442
+
+[sub_resource type="Gradient" id="Gradient_1wm5j"]
+offsets = PackedFloat32Array(0, 0.40849674, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tw2hw"]
+gradient = SubResource("Gradient_1wm5j")
+
+[sub_resource type="Curve" id="Curve_snp04"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9569893, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dkc0e"]
+curve = SubResource("Curve_snp04")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3hux"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 93.04
+gravity = Vector3(0, 50, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_dkc0e")
+color_ramp = SubResource("GradientTexture1D_tw2hw")
+turbulence_noise_strength = 4.25
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.163
+
+[node name="Area2D" type="Area2D" unique_id=1860972393]
+script = ExtResource("1_1wm5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=698956479]
+shape = SubResource("CircleShape2D_wvshy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2138325218]
+modulate = Color(3.504, 3.504, 3.504, 1)
+emitting = false
+amount = 150
+one_shot = true
+explosiveness = 1.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_m3hux")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
