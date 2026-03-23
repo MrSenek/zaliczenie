@@ -9,14 +9,15 @@
 resource_local_to_scene = true
 script = ExtResource("2_lb4m2")
 max_health = 1000
-attack = 3
+defence = 5
+attack = 1
 metadata/_custom_type_script = "uid://5weskl28l2ye"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7fvo"]
 size = Vector2(19, 25)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1359714668]
-position = Vector2(250, 194)
+position = Vector2(-2, -3)
 script = ExtResource("1_w0rc6")
 stats = SubResource("Resource_jlsw5")
 

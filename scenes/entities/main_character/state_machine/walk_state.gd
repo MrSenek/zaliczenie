@@ -5,8 +5,6 @@ class_name walk_state
 var idle_timer := 0.0
 const IDLE_TIMER := 1.0
 
-func enter():
-	print("entering walk state")
 
 
 func physics_update(delta: float):

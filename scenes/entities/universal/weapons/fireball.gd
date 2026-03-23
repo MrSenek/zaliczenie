@@ -1,6 +1,6 @@
 extends Area2D
 @export var SPEED = 200
-@export var damage = 50
+@export var damage = 5
 @export var cooldown = 1
 var shooter = ""
 var direction = 1

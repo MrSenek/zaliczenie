@@ -2,22 +2,46 @@ extends Area2D
 var closest_enemy = null
 var speed = 300
 var shooter
+var sending_time = 0.2
+var current_time = 0
 @export var explosion: PackedScene
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	closest_enemy = find_enemy()
-	print(closest_enemy)
-
-
-
-
-func _physics_process(delta: float) -> void:
 	if closest_enemy == null:
 		queue_free()
-	chase_enemy(delta)
 
+func _physics_process(delta: float) -> void:
+	if ray_cast_2d.is_colliding():
+		var collider = ray_cast_2d.get_collider()
+		if not collider.is_in_group(str(shooter)):
+			explode_self()
+			return
+
+	if current_time < sending_time:
+		global_position.y -= delta * 400
+		current_time += delta
+		rotation = deg_to_rad(-90)
+		return
+
+	if not is_instance_valid(closest_enemy):
+		closest_enemy = find_enemy()
+		
+
+	if not is_instance_valid(closest_enemy):
+		var velocity = Vector2.RIGHT.rotated(rotation) * speed
+		global_position += velocity * delta
+	else:
+		chase_enemy(delta)
+
+
+func explode_self():
+	var explode = explosion.instantiate()
+	explode.global_position = global_position
+	get_tree().current_scene.add_child.call_deferred(explode)
+	queue_free()
 
 
 func find_enemy():
@@ -39,17 +63,18 @@ func chase_enemy(delta: float):
 	if closest_enemy == null:
 		return
 	var direction = (closest_enemy.global_position - global_position).normalized()
-	global_position += speed*direction*delta
-	rotation = direction.angle()
+	var target_angle = direction.angle()
+	rotation = rotate_toward(rotation, target_angle, 4.0 * delta)
+	var velocity = Vector2.RIGHT.rotated(rotation) * speed
+	global_position += velocity * delta
 
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if not body.is_in_group(shooter):
-		if body.has_node("HP"):
-			body.get_node("HP").damage_taken(10000)
-			queue_free()
 		var explode = explosion.instantiate()
 		explode.global_position = body.global_position
-		get_tree().current_scene.add_child(explode)
+		get_tree().current_scene.add_child.call_deferred(explode)
+		if body.has_node("HP"):
+			body.get_node("HP").damage_taken(10000)
+			queue_free.call_deferred()

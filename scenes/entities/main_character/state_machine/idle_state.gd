@@ -3,8 +3,6 @@ extends State
 class_name idle_state
 
 
-func enter():
-	print("Entering idle state")
 	
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):

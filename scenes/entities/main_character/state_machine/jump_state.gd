@@ -5,7 +5,6 @@ const max_jumps : int= 200
 var jumps : int= 0
 
 func enter():
-	print("Entering jump state")
 	if character.is_on_floor():
 		character.velocity.y = character.JUMP_VELOCITY
 		jumps = 1

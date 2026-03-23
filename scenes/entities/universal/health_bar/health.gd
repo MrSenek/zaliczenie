@@ -10,6 +10,7 @@ func set_health(amount):
 	health_changed.emit(amount)
 
 func damage_taken(amount):
+	print(CURRENT_HEALTH)
 	CURRENT_HEALTH -= amount
 	health_changed.emit(CURRENT_HEALTH)
 	if CURRENT_HEALTH <= 0:
