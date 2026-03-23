@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="14_vh3e7"]
 [ext_resource type="Script" uid="uid://8durwr0pt5aw" path="res://scenes/entities/universal/weapons/missile_state.gd" id="15_dxk2j"]
 [ext_resource type="PackedScene" uid="uid://c5cwnsbow8aui" path="res://scenes/entities/universal/weapons/missile.tscn" id="16_q68as"]
+[ext_resource type="Script" uid="uid://dfehrq781ifia" path="res://scenes/entities/main_character/weapon_state_machine/gravity_grenade.gd" id="17_xvy7v"]
+[ext_resource type="PackedScene" uid="uid://bs6ethpaoximn" path="res://scenes/entities/universal/weapons/Gravity_Grenade/grenade.tscn" id="21_efsqn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_btved"]
 
@@ -225,7 +227,7 @@ sources/1 = SubResource("TileSetAtlasSource_mttvy")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
 distance = -148.0
 
-[sub_resource type="Resource" id="Resource_q68as"]
+[sub_resource type="Resource" id="Resource_xvy7v"]
 resource_local_to_scene = true
 script = ExtResource("4_dqeuc")
 max_health = 1000
@@ -287,7 +289,7 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("3_fmfh6")]
 position = Vector2(35, 455)
 collision_mask = 16
-stats = SubResource("Resource_q68as")
+stats = SubResource("Resource_xvy7v")
 
 [node name="state_machine" type="Node" parent="main_character" unique_id=2141826650 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fiaw")
@@ -344,6 +346,10 @@ wait_time = 0.1
 script = ExtResource("15_dxk2j")
 missile = ExtResource("16_q68as")
 
+[node name="gravity_grenade" type="Node2D" parent="main_character/weapon_state_machine" unique_id=820431864]
+script = ExtResource("17_xvy7v")
+grav_grenade = ExtResource("21_efsqn")
+
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("4_bp082")]
 position = Vector2(197, 447)
 
@@ -359,6 +365,9 @@ texture = ExtResource("13_jqrd4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468433762]
 environment = SubResource("Environment_efsqn")
+
+[node name="Node2D" parent="." unique_id=931716227 instance=ExtResource("21_efsqn")]
+position = Vector2(141, 403)
 
 [connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]

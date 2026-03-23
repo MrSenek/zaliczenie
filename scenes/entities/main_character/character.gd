@@ -5,11 +5,15 @@ const JUMP_VELOCITY = -400.0
 @export var stats: Stats
 @onready var HEALTH_POINTS: int = stats.max_health
 var SPAWN_POINT
+var dir
 
 func _ready() -> void:
 	SPAWN_POINT = global_position
 	self.add_to_group("Player")
-	
+
+func _process(delta: float) -> void:
+	dir = Input.get_axis("ui_left", "ui_right")
+
 func _on_hp_death() -> void:
 		global_position = SPAWN_POINT
 		get_node("HP").CURRENT_HEALTH = HEALTH_POINTS

@@ -7,7 +7,6 @@ var current_time = 0
 @export var explosion: PackedScene
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	closest_enemy = find_enemy()
 	if closest_enemy == null:
@@ -72,9 +71,7 @@ func chase_enemy(delta: float):
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group(shooter):
-		var explode = explosion.instantiate()
-		explode.global_position = body.global_position
-		get_tree().current_scene.add_child.call_deferred(explode)
+		explode_self()
 		if body.has_node("HP"):
 			body.get_node("HP").damage_taken(10000)
 			queue_free.call_deferred()

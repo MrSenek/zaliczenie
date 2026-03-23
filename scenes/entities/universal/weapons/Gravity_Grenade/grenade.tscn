@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bs6ethpaoximn"]
+
+[ext_resource type="Script" uid="uid://bavcqio7a267k" path="res://scenes/entities/universal/weapons/Gravity_Grenade/grenade.gd" id="1_a6w2i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hdx7j"]
+bounce = 0.54
+
+[sub_resource type="Gradient" id="Gradient_hdx7j"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6w2i"]
+gradient = SubResource("Gradient_hdx7j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.7)
+metadata/_snap_enabled = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijs7q"]
+
+[node name="Node2D" type="RigidBody2D" unique_id=931716227]
+collision_layer = 4
+collision_mask = 16
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_hdx7j")
+script = ExtResource("1_a6w2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=40825000]
+texture_filter = 2
+texture = SubResource("GradientTexture2D_a6w2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2116261721]
+shape = SubResource("CircleShape2D_ijs7q")
