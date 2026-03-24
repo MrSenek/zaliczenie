@@ -13,8 +13,35 @@ const SPEED = 75.0
 const JUMP_VELOCITY = -250.0
 var is_dead = false
 
+var external_force := Vector2.ZERO
+
+#function for external forces like push back, gravity, slow
+func add_external_force(force: Vector2):
+	external_force += force
+
+
 func _ready() -> void:
 	self.add_to_group("enemy")
+
+
+func _physics_process(delta: float) -> void:
+	
+	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	if !is_dead:
+		wandering()
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	#for using external forces
+	velocity += external_force
+	external_force = Vector2.ZERO
+	velocity = velocity.limit_length(300)
+	
+	move_and_slide()
+
 
 func shoot():
 	if shoot_cooldown.is_stopped():
@@ -50,23 +77,13 @@ func wandering():
 		dziura.position.x = abs(dziura.position.x) * direction
 		ray_cast_2d.target_position.x = abs(ray_cast_2d.target_position.x) * direction
 		timer.start()
-	velocity.x = direction * SPEED
+	velocity.x = move_toward(velocity.x, direction*SPEED, 200)
 	edge()
 	shoot()
 	if  ray_cast_2d.is_colliding():
 		jump()
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	if !is_dead:
-		wandering()
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 
-	move_and_slide()
 
 
 func _on_hp_death() -> void:

@@ -366,8 +366,5 @@ texture = ExtResource("13_jqrd4")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468433762]
 environment = SubResource("Environment_efsqn")
 
-[node name="Node2D" parent="." unique_id=931716227 instance=ExtResource("21_efsqn")]
-position = Vector2(141, 403)
-
 [connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]

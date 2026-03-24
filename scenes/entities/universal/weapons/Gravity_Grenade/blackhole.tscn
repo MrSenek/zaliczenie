@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dbs0snralnv0c"]
+
+[ext_resource type="Script" uid="uid://bulxe6fcc22sx" path="res://scenes/entities/universal/weapons/Gravity_Grenade/blackhole.gd" id="1_bbyc6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdfjv"]
+radius = 70.00714
+
+[sub_resource type="Gradient" id="Gradient_bbyc6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nshvw"]
+gradient = SubResource("Gradient_bbyc6")
+fill = 1
+fill_from = Vector2(0.5052083, 0.5017361)
+fill_to = Vector2(0.6822917, 0.6232639)
+
+[node name="Node2D" type="Area2D" unique_id=602748358]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_bbyc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1201512497]
+shape = SubResource("CircleShape2D_bdfjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845256137]
+texture = SubResource("GradientTexture2D_nshvw")

@@ -12,7 +12,9 @@ func _ready() -> void:
 	self.add_to_group("Player")
 
 func _process(delta: float) -> void:
-	dir = Input.get_axis("ui_left", "ui_right")
+	if Input.get_axis("ui_left","ui_right") != 0:
+		dir = Input.get_axis("ui_left", "ui_right")
+	print(dir)
 
 func _on_hp_death() -> void:
 		global_position = SPAWN_POINT
