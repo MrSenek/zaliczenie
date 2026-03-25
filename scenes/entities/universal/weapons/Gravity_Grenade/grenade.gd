@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var blackhole: PackedScene
-var dir: int
+var dir: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

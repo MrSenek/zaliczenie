@@ -12,7 +12,7 @@ func _ready() -> void:
 	gravity_point_unit_distance = 100
 	gravity = 1000
 	
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(5).timeout
 	queue_free()
 
 

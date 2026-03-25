@@ -14,9 +14,9 @@
 [ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="8_jxony"]
 [ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="9_bahuv"]
 [ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="10_na1hj"]
+[ext_resource type="PackedScene" uid="uid://ccqqdic6y5t3x" path="res://scenes/entities/enemies/cacodemon/cacodemon.tscn" id="10_xvy7v"]
 [ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="12_ct8lj"]
 [ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="13_2y0gd"]
-[ext_resource type="Texture2D" uid="uid://dha7usq7m0348" path="res://scenes/entities/enemies/enim2.png" id="13_jqrd4"]
 [ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="14_vh3e7"]
 [ext_resource type="Script" uid="uid://8durwr0pt5aw" path="res://scenes/entities/universal/weapons/missile_state.gd" id="15_dxk2j"]
 [ext_resource type="PackedScene" uid="uid://c5cwnsbow8aui" path="res://scenes/entities/universal/weapons/missile.tscn" id="16_q68as"]
@@ -251,6 +251,12 @@ fog_mode = 1
 fog_light_energy = 4.37
 fog_density = 1.0
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aas22"]
+vertices = PackedVector2Array(673, 383, 927, 383, 1121, 441, 655, 441, 655, 417, 431, 383, 673, 337, 401, 417, 209, 383, 1121, 71.10156, 927, 337, 39, 78.890625, 431, 337, 209, 337, 39, 433, 401, 433)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 0, 4, 7), PackedInt32Array(8, 5, 7), PackedInt32Array(9, 2, 1, 10), PackedInt32Array(11, 9, 10, 6), PackedInt32Array(6, 5, 12), PackedInt32Array(11, 6, 12), PackedInt32Array(11, 12, 13), PackedInt32Array(14, 11, 13, 8), PackedInt32Array(15, 14, 8, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 280, 24, 448, 416, 448, 416, 432, 640, 432, 640, 456, 1136, 456, 1136, 56, 24, 64), PackedVector2Array(416, 352, 416, 368, 224, 368, 224, 352), PackedVector2Array(688, 352, 912, 352, 912, 368, 688, 368)])
+agent_radius = 15.0
+
 [node name="Mapa" type="Node2D" unique_id=911471941]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=965828872]
@@ -313,7 +319,6 @@ script = ExtResource("10_na1hj")
 
 [node name="Sprite2D" type="Sprite2D" parent="main_character/weapon_state_machine/fireball" unique_id=1330411576]
 visible = false
-z_index = 3
 rotation = 1.5707964
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_ct8lj")
@@ -359,12 +364,14 @@ position = Vector2(197, 447)
 position = Vector2(278, 448)
 max_enemies = 3
 
-[node name="Enim2" type="Sprite2D" parent="." unique_id=1127442216]
-position = Vector2(535, 405)
-texture = ExtResource("13_jqrd4")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468433762]
 environment = SubResource("Environment_efsqn")
+
+[node name="CharacterBody2D" parent="." unique_id=2124554108 instance=ExtResource("10_xvy7v")]
+position = Vector2(507, 282)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1899559016]
+navigation_polygon = SubResource("NavigationPolygon_aas22")
 
 [connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dha7usq7m0348"
-path="res://.godot/imported/enim2.png-14f2298aaa71e53be84429cff29144b2.ctex"
+uid="uid://bo4iuolwtf4yv"
+path="res://.godot/imported/enim2-an-odwr.png-4e7afa09e9ce7b5e126826ec257766b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/enemies/enim2.png"
-dest_files=["res://.godot/imported/enim2.png-14f2298aaa71e53be84429cff29144b2.ctex"]
+source_file="res://scenes/entities/enemies/cacodemon/enim2-an-odwr.png"
+dest_files=["res://.godot/imported/enim2-an-odwr.png-4e7afa09e9ce7b5e126826ec257766b0.ctex"]
 
 [params]
 
