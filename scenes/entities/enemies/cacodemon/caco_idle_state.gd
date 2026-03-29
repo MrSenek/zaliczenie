@@ -7,7 +7,7 @@ class_name caco_idle_state
 
 var dir: int = 1
 func enter():
-	pass
+	print("going to idle")
 
 func physics_update(delta: float):
 	if timer.is_stopped():
@@ -24,7 +24,7 @@ func physics_update(delta: float):
 	character.move_and_slide()
 
 func update(delta: float):
-	var targets = character.area_2d.get_overlapping_bodies()
+	var targets = character.seeing_range.get_overlapping_bodies()
 	for body in targets:
 		if body.is_in_group("Player"):
 			character.eyes.look_at(body.global_position)

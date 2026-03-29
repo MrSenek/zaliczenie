@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c4wrn5wwduvwb"]
+
+[ext_resource type="Texture2D" uid="uid://dyem0ji0iuye4" path="res://scenes/entities/enemies/cacodemon/smoke_05_a.png" id="1_3j2f8"]
+[ext_resource type="Script" uid="uid://cpwcq6igpyq8t" path="res://scenes/entities/enemies/cacodemon/smoke.gd" id="1_n43gj"]
+
+[sub_resource type="Gradient" id="Gradient_n43gj"]
+offsets = PackedFloat32Array(0.022875817, 0.14052288, 0.7091503, 0.9970414)
+colors = PackedColorArray(0, 0.16862746, 0, 0, 0, 0.16862746, 0, 0.23921569, 0, 0.36862746, 0.3372549, 0.24313726, 0, 0.4745098, 0.5176471, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t1s5u"]
+gradient = SubResource("Gradient_n43gj")
+
+[sub_resource type="Curve" id="Curve_tu5gh"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+_data = [Vector2(0, 0.05302015), 0.0, 0.0, 0, 0, Vector2(0.5107527, 0.12818792), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tjav3"]
+curve = SubResource("Curve_tu5gh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t71sc"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 99.97
+angle_min = 1.0728835e-05
+angle_max = 370.1
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, -5, 0)
+scale_curve = SubResource("CurveTexture_tjav3")
+color_ramp = SubResource("GradientTexture1D_t1s5u")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j2f8"]
+radius = 100.0
+
+[node name="Node2D" type="Node2D" unique_id=685887915]
+script = ExtResource("1_n43gj")
+
+[node name="Smoke_Effect" type="GPUParticles2D" parent="." unique_id=1671940298]
+light_mask = 2
+amount = 20
+texture = ExtResource("1_3j2f8")
+lifetime = 2.3299999999999996
+speed_scale = 0.5
+randomness = 0.96
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_t71sc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2005143912]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=548145355]
+shape = SubResource("CircleShape2D_3j2f8")
+
+[node name="damage_cooldown" type="Timer" parent="." unique_id=1499286652]
+wait_time = 0.15
+one_shot = true
+
+[node name="smoke_timer" type="Timer" parent="." unique_id=93243418]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

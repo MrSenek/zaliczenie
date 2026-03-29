@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 @onready var HEALTH_POINTS: int = stats.max_health
 var SPAWN_POINT
 var dir
+var speed_modifier: float = 1.0
 
 func _ready() -> void:
 	SPAWN_POINT = global_position
@@ -14,9 +15,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.get_axis("ui_left","ui_right") != 0:
 		dir = Input.get_axis("ui_left", "ui_right")
-	print(dir)
 
 func _on_hp_death() -> void:
 		global_position = SPAWN_POINT
 		get_node("HP").CURRENT_HEALTH = HEALTH_POINTS
 		get_node("HP").set_health(HEALTH_POINTS)
+
+func change_speed(new: float):
+	speed_modifier = new

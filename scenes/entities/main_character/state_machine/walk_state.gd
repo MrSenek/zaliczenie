@@ -8,14 +8,13 @@ const IDLE_TIMER := 1.0
 
 
 func physics_update(delta: float):
-	
 	if not character.is_on_floor():
-		character.velocity += character.get_gravity() * delta
+		character.velocity += character.get_gravity() * delta * character.speed_modifier
 
 	var direction := Input.get_axis("ui_left", "ui_right")
-	
+	var speed = direction*character.SPEED*character.speed_modifier
 	if direction:
-		character.velocity.x = move_toward(character.velocity.x, direction*character.SPEED, character.SPEED)
+		character.velocity.x = move_toward(character.velocity.x, speed, character.SPEED)
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, character.SPEED)
 	character.move_and_slide()

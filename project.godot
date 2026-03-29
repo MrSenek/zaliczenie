@@ -21,8 +21,8 @@ Money="*uid://b72exv3wtncm0"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1080
+window/size/viewport_height=720
 window/vsync/vsync_mode=2
 
 [input]
@@ -60,6 +60,10 @@ strzal={
 2d_physics/layer_3="Pocisk_soj"
 2d_physics/layer_4="Pocisk_wroga"
 2d_physics/layer_5="Mapa"
+
+[navigation]
+
+2d/default_edge_connection_margin=8.0
 
 [physics]
 

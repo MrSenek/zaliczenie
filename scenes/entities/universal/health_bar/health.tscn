@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cg7qb14ckfja5" path="res://scenes/entities/universal/health_bar/texture_progress_bar.gd" id="5_daq23"]
 
 [node name="Node" type="Node2D" unique_id=1180813858]
+z_index = 1
 script = ExtResource("1_ueyo1")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=114951356]

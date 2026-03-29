@@ -3,9 +3,19 @@
 [ext_resource type="Script" uid="uid://bs8ijcxnrlb5f" path="res://scenes/entities/enemies/cacodemon/cacodemon.gd" id="1_c6qjd"]
 [ext_resource type="Texture2D" uid="uid://b0hru2uxwa7k1" path="res://scenes/entities/enemies/cacodemon/enim2-an.png" id="2_c6qjd"]
 [ext_resource type="Script" uid="uid://dow8o22rj2ijp" path="res://scenes/entities/enemies/cacodemon/enemy_state_machine.gd" id="2_prwa4"]
+[ext_resource type="Script" uid="uid://5weskl28l2ye" path="res://scenes/entities/universal/stats.gd" id="2_v3mbm"]
 [ext_resource type="Texture2D" uid="uid://bo4iuolwtf4yv" path="res://scenes/entities/enemies/cacodemon/enim2-an-odwr.png" id="3_tmoiu"]
 [ext_resource type="Script" uid="uid://b2g026iyp4sx" path="res://scenes/entities/enemies/cacodemon/caco_idle_state.gd" id="4_tmoiu"]
 [ext_resource type="Script" uid="uid://bd88u37iovej6" path="res://scenes/entities/enemies/cacodemon/caco_chase_state.gd" id="6_ars0v"]
+[ext_resource type="PackedScene" uid="uid://b2u5wxfry5dtj" path="res://scenes/entities/universal/health_bar/health.tscn" id="7_dyh6v"]
+[ext_resource type="Script" uid="uid://dgn2kunfkn1aj" path="res://scenes/entities/enemies/cacodemon/caco_search_state.gd" id="8_xl650"]
+[ext_resource type="Script" uid="uid://chto8p0kluuar" path="res://scenes/entities/enemies/cacodemon/caco_attack_state.gd" id="9_d1pmh"]
+[ext_resource type="PackedScene" uid="uid://sgnwusqvhes6" path="res://scenes/entities/enemies/cacodemon/toxic_attack.tscn" id="10_14qig"]
+
+[sub_resource type="Resource" id="Resource_xl650"]
+script = ExtResource("2_v3mbm")
+max_health = 200
+metadata/_custom_type_script = "uid://5weskl28l2ye"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmoiu"]
 atlas = ExtResource("2_c6qjd")
@@ -119,15 +129,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcnem"]
-radius = 28.01785
+radius = 26.019224
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6qjd"]
 radius = 236.05296
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1pmh"]
+radius = 100.005
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2124554108]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 20
 script = ExtResource("1_c6qjd")
+stats = SubResource("Resource_xl650")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=841151647]
 sprite_frames = SubResource("SpriteFrames_prwa4")
@@ -138,11 +152,18 @@ frame_progress = 0.013043742
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109070199]
 shape = SubResource("CircleShape2D_fcnem")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2008779356]
+[node name="detection" type="Node2D" parent="." unique_id=327262480]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1266468221]
+[node name="Seeing_Range" type="Area2D" parent="detection" unique_id=2008779356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection/Seeing_Range" unique_id=1266468221]
 shape = SubResource("CircleShape2D_c6qjd")
 debug_color = Color(0.5697721, 0.5439622, 0.33678967, 0.41960785)
+
+[node name="Attack_Range" type="Area2D" parent="detection" unique_id=1092418412]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection/Attack_Range" unique_id=653992703]
+shape = SubResource("CircleShape2D_d1pmh")
 
 [node name="eyes" type="Node2D" parent="." unique_id=411246254]
 
@@ -164,11 +185,28 @@ autostart = true
 [node name="caco_chase_state" type="Node" parent="Enemy_State_Machine" unique_id=1437945840]
 script = ExtResource("6_ars0v")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=972677104]
-path_desired_distance = 30.0
-target_desired_distance = 30.0
-navigation_layers = 17
-avoidance_enabled = true
-debug_enabled = true
+[node name="caco_search_state" type="Node" parent="Enemy_State_Machine" unique_id=1541720649]
+script = ExtResource("8_xl650")
 
-[connection signal="body_entered" from="Area2D" to="Enemy_State_Machine/caco_idle_state" method="_on_area_2d_body_entered"]
+[node name="caco_attack_state" type="Node" parent="Enemy_State_Machine" unique_id=1166606711]
+script = ExtResource("9_d1pmh")
+toxic = ExtResource("10_14qig")
+
+[node name="shoot_cooldown" type="Timer" parent="Enemy_State_Machine/caco_attack_state" unique_id=546605481]
+wait_time = 3.0
+one_shot = true
+
+[node name="delay_timer" type="Timer" parent="Enemy_State_Machine/caco_attack_state" unique_id=1447062164]
+wait_time = 0.5
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=972677104]
+path_desired_distance = 41.9
+target_desired_distance = 50.0
+avoidance_enabled = true
+
+[node name="HP" parent="." unique_id=1180813858 instance=ExtResource("7_dyh6v")]
+position = Vector2(-1, -30)
+
+[connection signal="body_entered" from="detection/Seeing_Range" to="Enemy_State_Machine/caco_idle_state" method="_on_area_2d_body_entered"]
+[connection signal="death" from="HP" to="." method="_on_node_death"]

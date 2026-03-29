@@ -73,5 +73,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group(shooter):
 		explode_self()
 		if body.has_node("HP"):
-			body.get_node("HP").damage_taken(10000)
+			body.get_node("HP").damage_taken(100)
 			queue_free.call_deferred()

@@ -3,9 +3,7 @@ extends Area2D
 @export var pull_strength := 1200.0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
 	monitoring = true
 	gravity_space_override = Area2D.SPACE_OVERRIDE_COMBINE
 	gravity_point = true
@@ -31,6 +29,5 @@ func _physics_process(delta):
 
 			body.add_external_force(force)
 
-			# 🔥 tłumienie żeby nie uciekał
 			if body is CharacterBody2D:
 				body.velocity = body.velocity.limit_length(250)

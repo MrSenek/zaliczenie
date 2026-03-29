@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn2sr88oaf2au"
-path="res://.godot/imported/missile.png-6ca797290db5bd58420d0addff9caef9.ctex"
+uid="uid://dyem0ji0iuye4"
+path="res://.godot/imported/smoke_05_a.png-d2431a01c150757bed6c8266884b3541.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/universal/weapons/missile.png"
-dest_files=["res://.godot/imported/missile.png-6ca797290db5bd58420d0addff9caef9.ctex"]
+source_file="res://scenes/entities/enemies/cacodemon/smoke_05_a.png"
+dest_files=["res://.godot/imported/smoke_05_a.png-d2431a01c150757bed6c8266884b3541.ctex"]
 
 [params]
 

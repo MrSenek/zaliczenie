@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://sgnwusqvhes6"]
+
+[ext_resource type="Script" uid="uid://b6giwfvlskmpe" path="res://scenes/entities/enemies/cacodemon/Toxic_attack.gd" id="1_xwnxg"]
+[ext_resource type="PackedScene" uid="uid://c4wrn5wwduvwb" path="res://scenes/entities/enemies/cacodemon/smoke.tscn" id="2_2jigi"]
+[ext_resource type="Texture2D" uid="uid://cwm50jfucet52" path="res://scenes/entities/universal/weapons/fireball1.png" id="2_kcjgn"]
+
+[node name="Area2D" type="Area2D" unique_id=1449815166]
+script = ExtResource("1_xwnxg")
+gas = ExtResource("2_2jigi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=259512269]
+modulate = Color(2.3102762e-06, 0.70004815, 0.4483974, 1)
+texture = ExtResource("2_kcjgn")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1204182315]
+target_position = Vector2(28, 0)
+collision_mask = 17
