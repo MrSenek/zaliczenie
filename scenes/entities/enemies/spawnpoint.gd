@@ -14,7 +14,6 @@ func spawn_enemy():
 
 		var create_enemy = enemy_scene.instantiate()
 		add_child(create_enemy)
-		create_enemy.add_to_group("Enemy")
 		current_enemies += 1
 	timer.start(5)
 		
