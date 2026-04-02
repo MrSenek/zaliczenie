@@ -23,22 +23,13 @@ shape = SubResource("RectangleShape2D_1t5p2")
 [node name="Search_Range" type="CollisionShape2D" parent="." unique_id=1981849567]
 shape = SubResource("CircleShape2D_1t5p2")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=6220754]
-points = PackedVector2Array(0, 0, 41, 0)
-default_color = Color(0, 0.85741746, 0.49136657, 1)
-end_cap_mode = 2
-
-[node name="healing_cooldown" type="Timer" parent="." unique_id=52536688]
+[node name="Timer" type="Timer" parent="." unique_id=52536688]
 wait_time = 2.0
 one_shot = true
 
+[node name="Line2D" type="Line2D" parent="." unique_id=6220754]
+visible = false
+points = PackedVector2Array(0, 0, 41, 0)
+
 [node name="healing_timer" type="Timer" parent="." unique_id=903625049]
-wait_time = 0.5
 one_shot = true
-
-[node name="healing_tick" type="Timer" parent="." unique_id=511665346]
-wait_time = 0.1
-one_shot = true
-
-[connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
-[connection signal="timeout" from="healing_tick" to="." method="_on_healing_tick_timeout"]

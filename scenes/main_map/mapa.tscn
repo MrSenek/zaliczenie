@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="8_jxony"]
 [ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="9_bahuv"]
 [ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="10_na1hj"]
-[ext_resource type="PackedScene" uid="uid://ccqqdic6y5t3x" path="res://scenes/entities/enemies/cacodemon/cacodemon.tscn" id="10_xvy7v"]
 [ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="12_ct8lj"]
 [ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="13_2y0gd"]
 [ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="14_vh3e7"]
@@ -260,7 +259,7 @@ sources/1 = SubResource("TileSetAtlasSource_mttvy")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
 distance = -148.0
 
-[sub_resource type="Resource" id="Resource_m1s8n"]
+[sub_resource type="Resource" id="Resource_xvy7v"]
 resource_local_to_scene = true
 script = ExtResource("4_dqeuc")
 max_health = 1000
@@ -326,7 +325,7 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("3_fmfh6")]
 position = Vector2(35, 455)
 collision_mask = 16
-stats = SubResource("Resource_m1s8n")
+stats = SubResource("Resource_xvy7v")
 
 [node name="state_machine" type="Node" parent="main_character" unique_id=2141826650 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fiaw")
@@ -398,11 +397,8 @@ max_enemies = 3
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468433762]
 environment = SubResource("Environment_efsqn")
 
-[node name="CharacterBody2D" parent="." unique_id=2124554108 instance=ExtResource("10_xvy7v")]
-position = Vector2(507, 282)
-
 [node name="Totem" parent="." unique_id=1094523328 instance=ExtResource("23_aas22")]
-position = Vector2(520, 408)
+position = Vector2(277, 433)
 
 [connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]

@@ -1,17 +1,43 @@
 extends Area2D
-@onready var timer: Timer = $Timer
+@onready var healing_cooldown: Timer = $healing_cooldown
+@onready var line_2d: Line2D = $Line2D
+@onready var healing_timer: Timer = $healing_timer
+@onready var healing_tick: Timer = $healing_tick
+
 
 func _ready() -> void:
-	timer.start(2)
+	line_2d.visible = false
+	healing_cooldown.start(2)
 
-
-
+var target
+var target_node
 func _process(delta: float) -> void:
-	if timer.is_stopped():
-		var target = locate_healing_targets()
-		print(target)
-		timer.start()
-
+	if !healing_cooldown.is_stopped():
+		return
+	if healing_timer.is_stopped():
+		target = locate_healing_targets()
+	if target == null:
+		line_2d.visible = false
+		line_2d.set_point_position(1, Vector2.ZERO)
+		return
+	if !is_instance_valid(target["node"]):
+		target = null
+		line_2d.set_point_position(1,Vector2.ZERO)
+		return
+	if healing_timer.is_stopped():
+		healing_timer.start()
+	if !target["node"].has_node("HP"):
+		return
+	target_node = to_local(target["node"].global_position)
+	line_2d.visible = true
+	line_2d.set_point_position(0,Vector2.ZERO)
+	line_2d.set_point_position(1, target_node)
+	var pulse = sin(Time.get_ticks_msec() * 0.01) * 2
+	line_2d.width = 6 + pulse
+	if healing_tick.is_stopped():
+		target["node"].get_node("HP").damage_taken(-5)
+		healing_tick.start()
+	
 
 
 
@@ -29,4 +55,17 @@ func locate_healing_targets():
 	if important_targets:
 		return important_targets[0]
 	else:
-		return
+		return null
+
+
+func _on_healing_timer_timeout() -> void:
+	target = null
+	line_2d.set_point_position(1,Vector2.ZERO)
+	line_2d.visible = false
+	healing_cooldown.start()
+
+
+func _on_healing_cooldown_timeout() -> void:
+	target = null
+	line_2d.set_point_position(1,Vector2.ZERO)
+	line_2d.visible = false
