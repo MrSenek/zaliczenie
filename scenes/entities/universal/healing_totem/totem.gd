@@ -30,12 +30,12 @@ func _process(delta: float) -> void:
 		return
 	target_node = to_local(target["node"].global_position)
 	line_2d.visible = true
-	line_2d.set_point_position(0,Vector2.ZERO)
+	line_2d.set_point_position(0,Vector2.ZERO + Vector2(0,-8))
 	line_2d.set_point_position(1, target_node)
 	var pulse = sin(Time.get_ticks_msec() * 0.01) * 2
 	line_2d.width = 6 + pulse
 	if healing_tick.is_stopped():
-		target["node"].get_node("HP").damage_taken(-5)
+		target["node"].get_node("HP").damage_taken(-1)
 		healing_tick.start()
 	
 

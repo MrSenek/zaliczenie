@@ -20,7 +20,7 @@ func get_hp(amount):
 	if CURRENT_HEALTH > MAX_HEALTH:
 		CURRENT_HEALTH = MAX_HEALTH
 	
-	health_changed.emit(CURRENT_HEALTH)
+	#health_changed.emit(CURRENT_HEALTH)
 
 func _ready() -> void:
 	MAX_HEALTH = get_parent().stats.max_health

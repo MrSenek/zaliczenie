@@ -1,5 +1,5 @@
 extends Area2D
-const heal = 50
+const heal = 200
 
 
 func _on_body_entered(body: Node2D) -> void:
