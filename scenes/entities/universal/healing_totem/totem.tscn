@@ -90,7 +90,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="healing_timer" type="Timer" parent="." unique_id=903625049]
-wait_time = 0.5
+wait_time = 0.74
 one_shot = true
 
 [node name="healing_tick" type="Timer" parent="." unique_id=511665346]
@@ -121,4 +121,5 @@ process_material = SubResource("ParticleProcessMaterial_0bqmg")
 script = ExtResource("4_8kaea")
 
 [connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
+[connection signal="timeout" from="healing_timer" to="." method="_on_healing_timer_timeout"]
 [connection signal="timeout" from="healing_tick" to="." method="_on_healing_tick_timeout"]

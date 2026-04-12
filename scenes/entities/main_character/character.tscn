@@ -27,6 +27,7 @@ stats = SubResource("Resource_jlsw5")
 texture = ExtResource("2_w0rc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2083763825]
+visible = false
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_n7fvo")
 

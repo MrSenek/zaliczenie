@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-@export var stats: Stats
+@export var stats: PlayerStats
 @onready var HEALTH_POINTS: int = stats.max_health
 var SPAWN_POINT
 var dir

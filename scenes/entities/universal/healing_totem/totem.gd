@@ -14,7 +14,7 @@ var target_node
 func _process(delta: float) -> void:
 	if !healing_cooldown.is_stopped():
 		return
-	if healing_timer.is_stopped():
+	if healing_timer.is_stopped() and healing_cooldown.is_stopped():
 		target = locate_healing_targets()
 	if target == null:
 		line_2d.visible = false
@@ -59,10 +59,11 @@ func locate_healing_targets():
 
 
 func _on_healing_timer_timeout() -> void:
+	healing_cooldown.start()
 	target = null
 	line_2d.set_point_position(1,Vector2.ZERO)
 	line_2d.visible = false
-	healing_cooldown.start()
+	
 
 
 func _on_healing_cooldown_timeout() -> void:
