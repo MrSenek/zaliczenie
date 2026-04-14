@@ -289,6 +289,7 @@ tile_set = SubResource("TileSet_k8gwg")
 navigation_visibility_mode = 1
 
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("4_wak3q")]
+z_index = 1
 position = Vector2(196, 454)
 collision_mask = 16
 stats = SubResource("Resource_nm3ut")
