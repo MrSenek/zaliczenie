@@ -98,3 +98,10 @@ label_settings = SubResource("LabelSettings_f0tsd")
 horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 2
+
+[connection signal="body_entered" from="Item1" to="." method="_on_item_1_body_entered"]
+[connection signal="body_exited" from="Item1" to="." method="_on_item_1_body_exited"]
+[connection signal="body_entered" from="Item2" to="." method="_on_item_2_body_entered"]
+[connection signal="body_exited" from="Item2" to="." method="_on_item_2_body_exited"]
+[connection signal="body_entered" from="Item3" to="." method="_on_item_3_body_entered"]
+[connection signal="body_exited" from="Item3" to="." method="_on_item_3_body_exited"]
