@@ -36,7 +36,7 @@ texture = SubResource("GradientTexture2D_f0tsd")
 
 [node name="Node2D" type="Node2D" parent="Item1" unique_id=435763758]
 position = Vector2(0, -46)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.1, 0.1)
 
 [node name="Label" type="Label" parent="Item1/Node2D" unique_id=1851730888]
 texture_filter = 1
@@ -60,7 +60,7 @@ texture = SubResource("GradientTexture2D_f0tsd")
 
 [node name="Node2D" type="Node2D" parent="Item2" unique_id=1704400616]
 position = Vector2(0, -46)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.1, 0.1)
 
 [node name="Label" type="Label" parent="Item2/Node2D" unique_id=1566296664]
 texture_filter = 1
@@ -85,7 +85,7 @@ texture = SubResource("GradientTexture2D_f0tsd")
 
 [node name="Node2D" type="Node2D" parent="Item3" unique_id=393480972]
 position = Vector2(0, -46)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.1, 0.1)
 
 [node name="Label" type="Label" parent="Item3/Node2D" unique_id=1581319984]
 texture_filter = 1
