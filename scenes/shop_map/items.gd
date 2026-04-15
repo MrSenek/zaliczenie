@@ -33,6 +33,16 @@ func _process(delta: float) -> void:
 		item_3.queue_free()
 		item_1.queue_free()
 		give_item(item1)
+	if player_in["item2"] == true and Input.is_action_just_pressed("strzal"):
+		item_2.queue_free()
+		item_3.queue_free()
+		item_1.queue_free()
+		give_item(item2)
+	if player_in["item3"] == true and Input.is_action_just_pressed("strzal"):
+		item_2.queue_free()
+		item_3.queue_free()
+		item_1.queue_free()
+		give_item(item3)
 
 
 func give_item(item):

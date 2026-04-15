@@ -19,4 +19,11 @@ texture_over = ExtResource("3_4rsd7")
 texture_progress = ExtResource("3_udh4e")
 script = ExtResource("5_daq23")
 
+[node name="Label" type="Label" parent="TextureProgressBar" unique_id=1641752789]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -18.0
+offset_right = 53.0
+offset_bottom = 5.0
+
 [connection signal="health_changed" from="." to="TextureProgressBar" method="_on_node_health_changed"]

@@ -38,11 +38,11 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Weapon 1"):
 		change_state("fireball")
-	elif event.is_action_pressed("Weapon 2"):
+	elif event.is_action_pressed("Weapon 2") and "Electric Weapon" in PlayerData.owned_weapons:
 		change_state("electro")
-	elif event.is_action_pressed("Weapon 3"):
+	elif event.is_action_pressed("Weapon 3") and "Self Guiding Missile" in PlayerData.owned_weapons:
 		change_state("missile")
-	elif event.is_action_pressed("Weapon 4"):
+	elif event.is_action_pressed("Weapon 4") and "Gravity Grenade" in PlayerData.owned_weapons:
 		change_state("gravity_grenade")
 	
 func change_state(new_state_name: String) -> void:

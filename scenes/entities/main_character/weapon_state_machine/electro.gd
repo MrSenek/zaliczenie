@@ -4,7 +4,7 @@ class_name electro
 @onready var lightning_line: Line2D = $lightning_line
 @onready var collision: Area2D = $Area2D
 @onready var timer_dot: Timer = $Area2D/timer_DOT
-
+@export var damage: float
 
 var last_dir = 1
 func enter():
@@ -45,4 +45,4 @@ func _on_timer_dot_timeout() -> void:
 	var targets = collision.get_overlapping_bodies()
 	for body in targets:
 		if body.has_node("HP"):
-			body.get_node("HP").damage_taken(20)
+			body.get_node("HP").damage_taken(damage*PlayerData.attack)

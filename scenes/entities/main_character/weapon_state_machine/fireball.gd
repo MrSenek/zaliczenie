@@ -39,7 +39,7 @@ func shoot():
 		add_bullet.global_position = character.global_position
 		add_bullet.direction = last_dir
 		add_bullet.shooter = "Player"
-		add_bullet.damage *= character.stats.attack
+		add_bullet.damage *= PlayerData.attack
 		get_tree().current_scene.add_child(add_bullet)
 		can_shoot = false
 		await get_tree().create_timer(cooldown_shoot).timeout

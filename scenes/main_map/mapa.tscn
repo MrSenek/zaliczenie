@@ -5,22 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://2o17l75frosh" path="res://scenes/main_map/okno.png" id="2_r6tku"]
 [ext_resource type="PackedScene" uid="uid://h4umvvf3hq5x" path="res://scenes/entities/main_character/character.tscn" id="3_fmfh6"]
 [ext_resource type="PackedScene" uid="uid://bbud38hhcnb8l" path="res://scenes/entities/collectables/truskawka.tscn" id="4_bp082"]
-[ext_resource type="Script" uid="uid://c5dirk1s2q0qq" path="res://scenes/entities/main_character/state_machine/state_machine.gd" id="5_7fiaw"]
 [ext_resource type="PackedScene" uid="uid://obi64alvyh1l" path="res://scenes/entities/main_character/HUD.tscn" id="5_87tx7"]
-[ext_resource type="Script" uid="uid://ca6ho6sa8d3gm" path="res://scenes/entities/main_character/state_machine/idle_state.gd" id="6_js2ff"]
-[ext_resource type="Script" uid="uid://cicacqiedb47w" path="res://scenes/entities/main_character/Player_Data.gd" id="6_otmq7"]
 [ext_resource type="PackedScene" uid="uid://cvojmf8b58cdf" path="res://scenes/entities/enemies/spawnpoint.tscn" id="6_pc0c0"]
-[ext_resource type="Script" uid="uid://b4kowvrx5twy3" path="res://scenes/entities/main_character/state_machine/walk_state.gd" id="7_vt3nt"]
-[ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="8_jxony"]
-[ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="9_bahuv"]
-[ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="10_na1hj"]
-[ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="12_ct8lj"]
-[ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="13_2y0gd"]
-[ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="14_vh3e7"]
-[ext_resource type="Script" uid="uid://8durwr0pt5aw" path="res://scenes/entities/universal/weapons/missile_state.gd" id="15_dxk2j"]
-[ext_resource type="PackedScene" uid="uid://c5cwnsbow8aui" path="res://scenes/entities/universal/weapons/missile.tscn" id="16_q68as"]
-[ext_resource type="Script" uid="uid://dfehrq781ifia" path="res://scenes/entities/main_character/weapon_state_machine/gravity_grenade.gd" id="17_xvy7v"]
-[ext_resource type="PackedScene" uid="uid://bs6ethpaoximn" path="res://scenes/entities/universal/weapons/Gravity_Grenade/grenade.tscn" id="21_efsqn"]
 [ext_resource type="PackedScene" uid="uid://d12q2nq1tggh6" path="res://scenes/entities/universal/healing_totem/totem.tscn" id="23_aas22"]
 [ext_resource type="PackedScene" uid="uid://ccqqdic6y5t3x" path="res://scenes/entities/enemies/cacodemon/cacodemon.tscn" id="23_m1s8n"]
 [ext_resource type="Script" uid="uid://dqegi1mvvou7b" path="res://scenes/main_map/shop_door.gd" id="23_otmq7"]
@@ -261,13 +247,6 @@ sources/1 = SubResource("TileSetAtlasSource_otmq7")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w0rc6"]
 distance = -148.0
 
-[sub_resource type="Resource" id="Resource_m1s8n"]
-script = ExtResource("6_otmq7")
-metadata/_custom_type_script = "uid://cicacqiedb47w"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxk2j"]
-size = Vector2(150, 20)
-
 [sub_resource type="Environment" id="Environment_efsqn"]
 background_mode = 3
 tonemap_mode = 4
@@ -327,65 +306,6 @@ shape = SubResource("WorldBoundaryShape2D_w0rc6")
 [node name="main_character" parent="." unique_id=1359714668 instance=ExtResource("3_fmfh6")]
 position = Vector2(35, 455)
 collision_mask = 16
-stats = SubResource("Resource_m1s8n")
-
-[node name="state_machine" type="Node" parent="main_character" unique_id=2141826650 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("5_7fiaw")
-initial_state = NodePath("idle_state")
-
-[node name="idle_state" type="Node" parent="main_character/state_machine" unique_id=1171553688]
-script = ExtResource("6_js2ff")
-
-[node name="walk_state" type="Node" parent="main_character/state_machine" unique_id=1754073532]
-script = ExtResource("7_vt3nt")
-
-[node name="jump_state" type="Node" parent="main_character/state_machine" unique_id=331704928]
-script = ExtResource("8_jxony")
-
-[node name="weapon_state_machine" type="Node2D" parent="main_character" unique_id=1501569509 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("9_bahuv")
-initial_state = NodePath("fireball")
-
-[node name="fireball" type="Node2D" parent="main_character/weapon_state_machine" unique_id=970976620]
-script = ExtResource("10_na1hj")
-
-[node name="Sprite2D" type="Sprite2D" parent="main_character/weapon_state_machine/fireball" unique_id=1330411576]
-visible = false
-rotation = 1.5707964
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("12_ct8lj")
-
-[node name="electro" type="Node2D" parent="main_character/weapon_state_machine" unique_id=738920464]
-script = ExtResource("13_2y0gd")
-
-[node name="lightning_line" type="Line2D" parent="main_character/weapon_state_machine/electro" unique_id=267570076]
-visible = false
-modulate = Color(2.342, 2.342, 2.342, 1)
-points = PackedVector2Array(12, 0, 144, 0)
-width = 2.0
-default_color = Color(0.39607844, 1, 1, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("14_vh3e7")
-
-[node name="Area2D" type="Area2D" parent="main_character/weapon_state_machine/electro" unique_id=440192899]
-position = Vector2(86, 0)
-collision_mask = 18
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_character/weapon_state_machine/electro/Area2D" unique_id=1944263471]
-shape = SubResource("RectangleShape2D_dxk2j")
-
-[node name="timer_DOT" type="Timer" parent="main_character/weapon_state_machine/electro/Area2D" unique_id=80776267]
-wait_time = 0.1
-
-[node name="missile" type="Node2D" parent="main_character/weapon_state_machine" unique_id=1183743904]
-script = ExtResource("15_dxk2j")
-missile = ExtResource("16_q68as")
-
-[node name="gravity_grenade" type="Node2D" parent="main_character/weapon_state_machine" unique_id=820431864]
-script = ExtResource("17_xvy7v")
-grav_grenade = ExtResource("21_efsqn")
 
 [node name="truskawka" parent="." unique_id=1291276912 instance=ExtResource("4_bp082")]
 position = Vector2(197, 447)
@@ -403,7 +323,7 @@ environment = SubResource("Environment_efsqn")
 position = Vector2(277, 433)
 
 [node name="CharacterBody2D" parent="." unique_id=2124554108 instance=ExtResource("23_m1s8n")]
-position = Vector2(692, 47)
+position = Vector2(575, 299)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=963944604]
 position = Vector2(536, 439)
@@ -413,6 +333,4 @@ script = ExtResource("23_otmq7")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bon58")
 
-[connection signal="body_entered" from="main_character/weapon_state_machine/electro/Area2D" to="main_character/weapon_state_machine/electro" method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="main_character/weapon_state_machine/electro/Area2D/timer_DOT" to="main_character/weapon_state_machine/electro" method="_on_timer_dot_timeout"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

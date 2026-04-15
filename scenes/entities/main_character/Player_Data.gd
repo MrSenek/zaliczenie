@@ -1,7 +1,10 @@
-extends Resource
+extends Node
+signal stats_changed
 
-class_name PlayerStats
-@export var max_health: int = 100
+@export var max_health: int = 100:
+	set(value):
+		max_health = value
+		stats_changed.emit()
 @export var defence: int = 10
 @export var attack: float = 1
 var player_coins = 0
