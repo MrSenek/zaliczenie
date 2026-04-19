@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	var targets = area_2d.get_overlapping_bodies()
 	for body in targets:
 		if body.is_in_group("Player") and body.has_node("HP") and damage_cooldown.is_stopped():
-			body.get_node("HP").damage_taken(5)
+			body.get_node("HP").damage_taken(1)
 			damage_cooldown.start()
 		if body.has_method("change_speed"):
 			body.change_speed(0.75)

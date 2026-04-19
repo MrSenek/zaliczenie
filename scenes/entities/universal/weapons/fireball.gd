@@ -1,6 +1,6 @@
 extends Area2D
 @export var SPEED = 200
-@export var damage = 5
+@export var damage = 35
 @export var cooldown = 1
 var shooter = ""
 var direction = 1
@@ -23,4 +23,3 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.has_node("HP"):
 			body.get_node("HP").damage_taken(damage)
 			queue_free()
-	

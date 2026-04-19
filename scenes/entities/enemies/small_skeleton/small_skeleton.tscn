@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 script = ExtResource("2_iu7pn")
 max_health = 150
-attack = 1
+attack = 0.7
 metadata/_custom_type_script = "uid://5weskl28l2ye"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hibj"]
