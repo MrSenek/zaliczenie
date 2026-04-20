@@ -323,7 +323,7 @@ environment = SubResource("Environment_efsqn")
 position = Vector2(277, 433)
 
 [node name="CharacterBody2D" parent="." unique_id=2124554108 instance=ExtResource("23_m1s8n")]
-position = Vector2(575, 299)
+position = Vector2(549, 71)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=963944604]
 position = Vector2(536, 439)

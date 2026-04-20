@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://crm2myfcmw1ii" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="Texture2D" uid="uid://cup7pqcblmxya" path="res://scenes/main_map/Asset_Loch_001.png" id="2_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://dx1l7hxbl320d" path="res://scenes/main_map/Pochodnia_001.png" id="3_ob46e"]
+[ext_resource type="Texture2D" uid="uid://bjp683pm3761n" path="res://scenes/entities/main_character/1graczek.png" id="4_uqeha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ob46e"]
 texture = ExtResource("2_0ebjn")
@@ -101,6 +102,26 @@ texture = ExtResource("3_ob46e")
 [sub_resource type="TileSet" id="TileSet_wem23"]
 sources/0 = SubResource("TileSetAtlasSource_uqeha")
 
+[sub_resource type="Animation" id="Animation_wem23"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ovsr"]
+_data = {
+&"new_animation": SubResource("Animation_wem23")
+}
+
 [node name="Main menu" type="Node2D" unique_id=838459584]
 script = ExtResource("1_fsom3")
 
@@ -118,8 +139,10 @@ tile_set = SubResource("TileSet_wem23")
 [node name="button manager" type="Control" parent="." unique_id=2064967798]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 740.0
+offset_top = 98.0
+offset_right = 780.0
+offset_bottom = 138.0
 
 [node name="start" type="Button" parent="button manager" unique_id=811653408]
 layout_mode = 1
@@ -168,6 +191,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "QUIT"
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2069286779]
+libraries/ = SubResource("AnimationLibrary_3ovsr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=322777675]
+position = Vector2(656, 572)
+scale = Vector2(5, 5)
+texture = ExtResource("4_uqeha")
 
 [connection signal="pressed" from="button manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="button manager/test arena" to="." method="_on_test_arena_pressed"]
