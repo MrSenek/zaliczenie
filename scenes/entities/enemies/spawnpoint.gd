@@ -16,7 +16,7 @@ func spawn_enemy():
 		add_child(create_enemy)
 		current_enemies += 1
 	timer.start(5)
-		
+
 
 func _ready() -> void:
 	player = get_tree().root.find_child("main_character", true, false)
