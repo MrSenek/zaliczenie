@@ -2,7 +2,7 @@ extends Weapon_State
 class_name fireball
 
 @onready var bullet_scena : PackedScene = preload("res://scenes/entities/universal/weapons/fireball.tscn")
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func enter():
 	if not is_node_ready():

@@ -1,25 +1,37 @@
 extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var button_type:String
+@onready var fade_timer: Timer = $fade_transition/fade_timer
+@onready var fade_transition: ColorRect = $fade_transition
+@onready var fade_animation: AnimationPlayer = $fade_transition/AnimationPlayer
 
 func _on_start_pressed() -> void:
-	pass # Replace with function body.
-
+	button_type = "start"
+	animation_player.play("button_start")
+	fade_timer.start()
+	fade_transition.show()
+	fade_animation.play("fade_in")
 
 func _on_test_arena_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_map/mapa.tscn")
-
+	button_type = "test arena"
+	animation_player.play("button_test_arena")
+	fade_timer.start()
+	fade_transition.show()
+	fade_animation.play("fade_in")
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	button_type = "quit"
+	animation_player.play("button_quit")
+	fade_timer.start()
+	fade_transition.show()
+	fade_animation.play("fade_in")
+
+
+
+func _on_fade_timer_timeout() -> void:
+	if button_type == "start":
+		animation_player.play("button_start")
+	elif button_type == "test arena":
+		get_tree().change_scene_to_file("res://scenes/main_map/mapa.tscn")
+	elif button_type == "quit":
+		get_tree().quit()

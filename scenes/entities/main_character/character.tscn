@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h4umvvf3hq5x"]
 
 [ext_resource type="Script" uid="uid://b0m0ts1gobg1v" path="res://scenes/entities/main_character/character.gd" id="1_w0rc6"]
-[ext_resource type="Texture2D" uid="uid://bjp683pm3761n" path="res://scenes/entities/main_character/1graczek.png" id="2_w0rc6"]
+[ext_resource type="Texture2D" uid="uid://b8jxbk11avmrx" path="res://scenes/entities/main_character/Ludzik.png" id="3_ltnrr"]
 [ext_resource type="PackedScene" uid="uid://b2u5wxfry5dtj" path="res://scenes/entities/universal/health_bar/health.tscn" id="3_tlbcw"]
 [ext_resource type="Script" uid="uid://c5dirk1s2q0qq" path="res://scenes/entities/main_character/state_machine/state_machine.gd" id="4_u6tu1"]
 [ext_resource type="Script" uid="uid://ca6ho6sa8d3gm" path="res://scenes/entities/main_character/state_machine/idle_state.gd" id="5_utmtp"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="7_rvm66"]
 [ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="8_2wsin"]
 [ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="9_4ihrm"]
-[ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="10_84ou4"]
 [ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="11_oaeto"]
 [ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="12_rll1i"]
 [ext_resource type="Script" uid="uid://8durwr0pt5aw" path="res://scenes/entities/universal/weapons/missile_state.gd" id="13_0lvym"]
@@ -20,6 +19,52 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7fvo"]
 size = Vector2(19, 25)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ltnrr"]
+load_path = "res://.godot/imported/big_fireball.png-b2db92a7a0f1784ad077e88868ff645c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utmtp"]
+atlas = SubResource("CompressedTexture2D_ltnrr")
+region = Rect2(0, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qou0"]
+atlas = SubResource("CompressedTexture2D_ltnrr")
+region = Rect2(32, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvm66"]
+atlas = SubResource("CompressedTexture2D_ltnrr")
+region = Rect2(64, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wsin"]
+atlas = SubResource("CompressedTexture2D_ltnrr")
+region = Rect2(96, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ihrm"]
+atlas = SubResource("CompressedTexture2D_ltnrr")
+region = Rect2(128, 0, 32, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_84ou4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utmtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qou0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvm66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wsin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ihrm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr2ie"]
 size = Vector2(150, 20)
 
@@ -28,17 +73,21 @@ z_index = 1
 script = ExtResource("1_w0rc6")
 
 [node name="HP" parent="." unique_id=1591294406 instance=ExtResource("3_tlbcw")]
+position = Vector2(0, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1520758644]
-texture = ExtResource("2_w0rc6")
+position = Vector2(0, -8)
+texture = ExtResource("3_ltnrr")
+region_enabled = true
+region_rect = Rect2(67.59714, 16.68981, 21.817436, 37.443436)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2083763825]
-visible = false
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_n7fvo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=931485598]
-zoom = Vector2(3, 3)
+zoom = Vector2(3.5, 3.5)
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
@@ -62,11 +111,12 @@ initial_state = NodePath("fireball")
 [node name="fireball" type="Node2D" parent="weapon_state_machine" unique_id=1018920248]
 script = ExtResource("9_4ihrm")
 
-[node name="Sprite2D" type="Sprite2D" parent="weapon_state_machine/fireball" unique_id=1067973028]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="weapon_state_machine/fireball" unique_id=1731649760]
 visible = false
 rotation = 1.5707964
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_84ou4")
+sprite_frames = SubResource("SpriteFrames_84ou4")
+autoplay = "default"
 
 [node name="electro" type="Node2D" parent="weapon_state_machine" unique_id=1936269907]
 script = ExtResource("11_oaeto")

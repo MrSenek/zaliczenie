@@ -2,7 +2,50 @@
 
 [ext_resource type="Script" uid="uid://b0mfohjq0d8mr" path="res://scenes/entities/universal/weapons/fireball.gd" id="1_djvif"]
 [ext_resource type="Texture2D" uid="uid://dbgwqua3ak60" path="res://scenes/main_map/light.png" id="2_v4vcj"]
-[ext_resource type="Texture2D" uid="uid://cgjn0blcpep7r" path="res://scenes/entities/universal/weapons/fireball2.png" id="3_bcp2c"]
+[ext_resource type="Texture2D" uid="uid://c7ajsclupq1lt" path="res://scenes/entities/universal/weapons/big_fireball1.png" id="3_djvif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4vcj"]
+atlas = ExtResource("3_djvif")
+region = Rect2(0, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcp2c"]
+atlas = ExtResource("3_djvif")
+region = Rect2(32, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iilmi"]
+atlas = ExtResource("3_djvif")
+region = Rect2(64, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tfue"]
+atlas = ExtResource("3_djvif")
+region = Rect2(96, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je5xq"]
+atlas = ExtResource("3_djvif")
+region = Rect2(128, 0, 32, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stipc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4vcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcp2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iilmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tfue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je5xq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkb82"]
 radius = 11.0
@@ -17,9 +60,12 @@ scale = Vector2(0.9921875, 0.9609375)
 color = Color(1, 1, 0, 1)
 texture = ExtResource("2_v4vcj")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1098665296]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=956496570]
+texture_filter = 1
 position = Vector2(0, -3)
-texture = ExtResource("3_bcp2c")
+sprite_frames = SubResource("SpriteFrames_stipc")
+autoplay = "default"
+frame_progress = 0.68463933
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1806236798]
 position = Vector2(6, -2)

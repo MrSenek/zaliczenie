@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dxxvmfmwx4a5a" path="res://scenes/main_menu/Quit_1_normal.png" id="18_83tid"]
 [ext_resource type="Texture2D" uid="uid://bxt2xbtv54xh6" path="res://scenes/main_menu/Quit_art_2_Klik.png" id="19_t0qut"]
 [ext_resource type="Texture2D" uid="uid://cq27y36r4vi4o" path="res://scenes/main_menu/Quit_2_Najechanie.png" id="20_g8sw0"]
+[ext_resource type="PackedScene" uid="uid://dvyi3w87od8d6" path="res://scenes/main_menu/fade_anim.tscn" id="21_i7nm7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ob46e"]
 texture = ExtResource("2_0ebjn")
@@ -184,6 +185,134 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4ujhu"]
 normal = Vector2(-1, 0)
 
+[sub_resource type="Animation" id="Animation_i7nm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button manager/test arena:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(614.5, 7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button manager/quit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1229, 7.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button manager/start:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n7xlh"]
+resource_name = "button_quit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button manager/start:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button manager/test arena:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(614.5, 0), Vector2(614.5, -30), Vector2(614.5, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_0m3cs"]
+resource_name = "button_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button manager/test arena:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(614.5, 0), Vector2(614.5, -30), Vector2(614.5, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button manager/quit:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666664, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1229, 0), Vector2(1229, -30), Vector2(1229, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_tfctf"]
+resource_name = "button_test_arena"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button manager/start:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button manager/quit:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1229, 0), Vector2(1229, -30), Vector2(1229, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7nm7"]
+_data = {
+&"RESET": SubResource("Animation_i7nm7"),
+&"button_quit": SubResource("Animation_n7xlh"),
+&"button_start": SubResource("Animation_0m3cs"),
+&"button_test_arena": SubResource("Animation_tfctf")
+}
+
 [node name="Main menu" type="Node2D" unique_id=838459584]
 script = ExtResource("1_fsom3")
 
@@ -199,7 +328,7 @@ tile_map_data = PackedByteArray("AAACAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAADAAQAAAAAAAA
 tile_set = SubResource("TileSet_wem23")
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMapLayer2" unique_id=517756102]
-texture_filter = 2
+texture_filter = 1
 position = Vector2(56.166668, 75.99999)
 scale = Vector2(2, 2)
 energy = 2.25
@@ -247,38 +376,46 @@ size_flags_vertical = 0
 
 [node name="start" type="TextureButton" parent="button manager" unique_id=681285189]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.30100003
-anchor_bottom = 1.0
-offset_right = 0.5409546
-offset_bottom = -15.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -96.5
+offset_right = 530.0
+offset_bottom = 81.5
+grow_vertical = 2
 texture_normal = ExtResource("12_0m3cs")
 texture_pressed = ExtResource("13_i7nm7")
 texture_hover = ExtResource("14_tfctf")
 
 [node name="test arena" type="TextureButton" parent="button manager" unique_id=25524466]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.349
-anchor_right = 0.651
-anchor_bottom = 0.92200005
-offset_left = 0.6090088
-offset_right = -0.6090088
-offset_bottom = 0.053985596
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -89.0
+offset_right = 265.0
+offset_bottom = 89.0
 grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("15_n7xlh")
 texture_pressed = ExtResource("16_0xlsr")
 texture_hover = ExtResource("17_0oicw")
 
 [node name="quit" type="TextureButton" parent="button manager" unique_id=315980968]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.69900006
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.92200005
-offset_left = -0.5411377
-offset_bottom = 0.053985596
+anchor_bottom = 0.5
+offset_left = -530.0
+offset_top = -89.0
+offset_bottom = 89.0
 grow_horizontal = 0
+grow_vertical = 2
 texture_normal = ExtResource("18_83tid")
 texture_pressed = ExtResource("19_t0qut")
 texture_hover = ExtResource("20_g8sw0")
@@ -297,6 +434,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("4_uqeha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidBody2D" unique_id=393442048]
+visible = false
 position = Vector2(-5, -11)
 shape = SubResource("CapsuleShape2D_x2yjq")
 
@@ -348,6 +486,16 @@ shape = SubResource("WorldBoundaryShape2D_dn3lk")
 position = Vector2(1920, 453)
 shape = SubResource("WorldBoundaryShape2D_4ujhu")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=119984757]
+libraries/ = SubResource("AnimationLibrary_i7nm7")
+
+[node name="fade_transition" parent="." unique_id=1346027126 instance=ExtResource("21_i7nm7")]
+visible = false
+
+[node name="fade_timer" type="Timer" parent="fade_transition" unique_id=13308777]
+wait_time = 2.0
+
 [connection signal="pressed" from="button manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="button manager/test arena" to="." method="_on_test_arena_pressed"]
 [connection signal="pressed" from="button manager/quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="fade_transition/fade_timer" to="." method="_on_fade_timer_timeout"]
