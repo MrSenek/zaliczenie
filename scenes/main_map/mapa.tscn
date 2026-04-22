@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bbud38hhcnb8l" path="res://scenes/entities/collectables/truskawka.tscn" id="4_bp082"]
 [ext_resource type="PackedScene" uid="uid://obi64alvyh1l" path="res://scenes/entities/main_character/HUD.tscn" id="5_87tx7"]
 [ext_resource type="PackedScene" uid="uid://cvojmf8b58cdf" path="res://scenes/entities/enemies/spawnpoint.tscn" id="6_pc0c0"]
+[ext_resource type="PackedScene" uid="uid://cepda1jqcoa65" path="res://scenes/entities/enemies/blob_enemy/blob_enemy.tscn" id="11_jxony"]
 [ext_resource type="PackedScene" uid="uid://d12q2nq1tggh6" path="res://scenes/entities/universal/healing_totem/totem.tscn" id="23_aas22"]
 [ext_resource type="PackedScene" uid="uid://ccqqdic6y5t3x" path="res://scenes/entities/enemies/cacodemon/cacodemon.tscn" id="23_m1s8n"]
 [ext_resource type="Script" uid="uid://dqegi1mvvou7b" path="res://scenes/main_map/shop_door.gd" id="23_otmq7"]
@@ -332,5 +333,8 @@ script = ExtResource("23_otmq7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=337496771]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bon58")
+
+[node name="blob_enemy" parent="." unique_id=1650501818 instance=ExtResource("11_jxony")]
+position = Vector2(483, 417)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

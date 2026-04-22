@@ -4,8 +4,10 @@ var direction = 1
 var damage = 25
 const cooldown = 0.5
 var shooter = ""
-@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+
+
 
 func _ready() -> void:
 	get_tree().create_timer(5.0).timeout.connect(queue_free)

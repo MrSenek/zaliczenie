@@ -5,23 +5,90 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdfjv"]
 radius = 70.00714
 
-[sub_resource type="Gradient" id="Gradient_bbyc6"]
+[sub_resource type="Gradient" id="Gradient_nsi7j"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p57mn"]
+gradient = SubResource("Gradient_nsi7j")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.49479166, 0.49131945)
+fill_to = Vector2(0.5538194, 0.5989583)
+
+[sub_resource type="Gradient" id="Gradient_rn11f"]
+offsets = PackedFloat32Array(0, 0.5980392)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gsbvl"]
+gradient = SubResource("Gradient_rn11f")
+
+[sub_resource type="Curve" id="Curve_7q7pa"]
+_data = [Vector2(0.49999997, 0.5167786), 0.0, 0.0, 0, 0, Vector2(0.80645156, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xirtr"]
+curve = SubResource("Curve_7q7pa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bbyc6"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 60.0
+emission_ring_inner_radius = 40.0
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = -0.19999991
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -300.0
+radial_accel_max = -300.0
+scale_curve = SubResource("CurveTexture_xirtr")
+color_ramp = SubResource("GradientTexture1D_gsbvl")
+
+[sub_resource type="Gradient" id="Gradient_nshvw"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0s041"]
+gradient = SubResource("Gradient_nshvw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6, 0.7)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_bbyc6"]
+offsets = PackedFloat32Array(0.60336536, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nshvw"]
 gradient = SubResource("Gradient_bbyc6")
 fill = 1
 fill_from = Vector2(0.5052083, 0.5017361)
-fill_to = Vector2(0.6822917, 0.6232639)
+fill_to = Vector2(0.6927083, 0.6788194)
 
 [node name="Node2D" type="Area2D" unique_id=602748358]
-position = Vector2(0, -25)
+position = Vector2(0, -57)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_bbyc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1201512497]
+visible = false
 shape = SubResource("CircleShape2D_bdfjv")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=130340838]
+texture_filter = 2
+amount = 90
+texture = SubResource("GradientTexture2D_p57mn")
+fixed_fps = 60
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_bbyc6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1607465182]
+texture_filter = 2
+texture = SubResource("GradientTexture2D_0s041")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845256137]
+texture_filter = 2
 texture = SubResource("GradientTexture2D_nshvw")
