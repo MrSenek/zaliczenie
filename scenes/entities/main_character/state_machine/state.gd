@@ -6,7 +6,7 @@ class_name State
 var state_machine: StateMachine
 var character: CharacterBody2D
 
-func enter():
+func enter(data = {}):
 	pass
 
 func exit():

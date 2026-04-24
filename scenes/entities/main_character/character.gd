@@ -10,6 +10,7 @@ var speed_modifier: float = 1.0
 func _ready() -> void:
 	SPAWN_POINT = global_position
 	self.add_to_group("Player")
+	dir = sprite_2d.flip_h
 
 func _process(delta: float) -> void:
 	if Input.get_axis("ui_left","ui_right") != 0:

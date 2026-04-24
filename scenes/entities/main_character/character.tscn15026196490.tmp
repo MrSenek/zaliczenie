@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://h4umvvf3hq5x"]
 
 [ext_resource type="Script" uid="uid://b0m0ts1gobg1v" path="res://scenes/entities/main_character/character.gd" id="1_w0rc6"]
+[ext_resource type="Texture2D" uid="uid://b8jxbk11avmrx" path="res://scenes/entities/main_character/Ludzik.png" id="3_ltnrr"]
 [ext_resource type="PackedScene" uid="uid://b2u5wxfry5dtj" path="res://scenes/entities/universal/health_bar/health.tscn" id="3_tlbcw"]
-[ext_resource type="Shader" uid="uid://dpie1h35rm23x" path="res://scenes/entities/main_character/character.gdshader" id="3_utmtp"]
 [ext_resource type="Script" uid="uid://c5dirk1s2q0qq" path="res://scenes/entities/main_character/state_machine/state_machine.gd" id="4_u6tu1"]
-[ext_resource type="Texture2D" uid="uid://cccskynyp23eo" path="res://scenes/entities/main_character/player_sprite.png" id="4_utmtp"]
 [ext_resource type="Script" uid="uid://ca6ho6sa8d3gm" path="res://scenes/entities/main_character/state_machine/idle_state.gd" id="5_utmtp"]
 [ext_resource type="Script" uid="uid://b4kowvrx5twy3" path="res://scenes/entities/main_character/state_machine/walk_state.gd" id="6_4qou0"]
 [ext_resource type="Script" uid="uid://cx15e8u3vincn" path="res://scenes/entities/main_character/state_machine/jump_state.gd" id="7_rvm66"]
@@ -18,13 +17,8 @@
 [ext_resource type="Script" uid="uid://dfehrq781ifia" path="res://scenes/entities/main_character/weapon_state_machine/gravity_grenade.gd" id="15_y7tf0"]
 [ext_resource type="PackedScene" uid="uid://bs6ethpaoximn" path="res://scenes/entities/universal/weapons/Gravity_Grenade/grenade.tscn" id="16_qq1ml"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qou0"]
-shader = ExtResource("3_utmtp")
-shader_parameter/blur_amount = 0.0
-shader_parameter/blur_direction = Vector2(1, 0)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7fvo"]
-size = Vector2(19, 36)
+size = Vector2(19, 25)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ltnrr"]
 load_path = "res://.godot/imported/big_fireball.png-b2db92a7a0f1784ad077e88868ff645c.ctex"
@@ -83,11 +77,13 @@ script = ExtResource("1_w0rc6")
 position = Vector2(0, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1520758644]
-material = SubResource("ShaderMaterial_4qou0")
-texture = ExtResource("4_utmtp")
+position = Vector2(0, -8)
+texture = ExtResource("3_ltnrr")
+region_enabled = true
 region_rect = Rect2(67.59714, 16.68981, 21.817436, 37.443436)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2083763825]
+position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_n7fvo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=931485598]
@@ -113,7 +109,7 @@ script = ExtResource("7_rvm66")
 script = ExtResource("8_u6tu1")
 
 [node name="recoil" type="Timer" parent="state_machine/recoil_state" unique_id=1674664735]
-wait_time = 0.2
+wait_time = 0.3
 
 [node name="weapon_state_machine" type="Node2D" parent="." unique_id=2124445293 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_2wsin")

@@ -10,8 +10,7 @@ class_name caco_chase_state
 
 var last_loc : Vector2
 
-func enter():
-	print("going to chase")
+func enter(data = {}):
 	update_last_position()
 
 func physics_update(delta: float):

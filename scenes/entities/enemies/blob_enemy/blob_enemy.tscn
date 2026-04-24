@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cepda1jqcoa65"]
 
+[ext_resource type="Script" uid="uid://chg2hwufk5elh" path="res://scenes/entities/enemies/blob_enemy/blob_enemy.gd" id="1_adslp"]
 [ext_resource type="Script" uid="uid://dow8o22rj2ijp" path="res://scenes/entities/enemies/cacodemon/enemy_state_machine.gd" id="1_eqdcg"]
 [ext_resource type="Texture2D" uid="uid://c1jxrvcdraq1q" path="res://scenes/entities/enemies/blob_enemy/blue-enim.png" id="1_vfqwy"]
 [ext_resource type="Texture2D" uid="uid://dtla7ydlsjwtm" path="res://scenes/entities/enemies/blob_enemy/blue-en-bez-strz.png" id="2_6nayp"]
@@ -214,6 +215,7 @@ size = Vector2(66, 64)
 collision_layer = 2
 collision_mask = 20
 motion_mode = 1
+script = ExtResource("1_adslp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=798987947]
 position = Vector2(3, 0)

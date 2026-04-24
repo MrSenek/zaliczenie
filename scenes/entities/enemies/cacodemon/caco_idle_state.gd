@@ -6,8 +6,7 @@ class_name caco_idle_state
 @onready var timer: Timer = $Timer
 
 var dir: int = 1
-func enter():
-	print("going to idle")
+
 
 func physics_update(delta: float):
 	if timer.is_stopped():

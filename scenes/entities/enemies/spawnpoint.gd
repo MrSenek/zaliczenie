@@ -1,7 +1,7 @@
 extends Node2D
 @onready var enemy_scene : PackedScene = preload("res://scenes/entities/enemies/small_skeleton/small_skeleton.tscn")
 @onready var timer: Timer = $Timer
-@export var max_enemies: int = 0
+@export var max_enemies: int = 1
 
 var player: Node2D
 var current_enemies : int;
@@ -10,7 +10,7 @@ var current_enemies : int;
 func spawn_enemy():
 	var player_location = player.global_position
 	var distance_to_player = player_location.x - global_position.x
-	if abs(distance_to_player) > 50 and timer.is_stopped() and current_enemies <= max_enemies:
+	if abs(distance_to_player) > 50 and timer.is_stopped() and current_enemies < max_enemies:
 
 		var create_enemy = enemy_scene.instantiate()
 		add_child(create_enemy)
@@ -20,6 +20,7 @@ func spawn_enemy():
 
 func _ready() -> void:
 	player = get_tree().root.find_child("main_character", true, false)
+	#timer.start()
 
 func _on_timer_timeout() -> void:
 	spawn_enemy()

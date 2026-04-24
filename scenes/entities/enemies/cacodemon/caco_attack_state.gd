@@ -10,8 +10,7 @@ var direction: Vector2 = Vector2.RIGHT
 var player_detected:bool = false
 var target_player = null
 
-func enter():
-	print("going to attack")
+func enter(data = {}):
 	check_for_player()
 	if target_player:
 		delay_timer.start()

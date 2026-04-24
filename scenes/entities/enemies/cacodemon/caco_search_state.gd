@@ -3,8 +3,7 @@ extends Enemy_State
 @onready var attack_range: Area2D = $"../../detection/Attack_Range"
 
 
-func enter():
-	print("going to search")
+func enter(data = {}):
 	sprite.flip_h = !sprite.flip_h
 	await get_tree().create_timer(0.7).timeout
 	sprite.flip_h = !sprite.flip_h

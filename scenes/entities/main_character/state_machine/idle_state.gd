@@ -2,11 +2,16 @@ extends State
 
 class_name idle_state
 
+func enter(data = {}):
+	character.velocity.x = 0
 
-	
-func handle_input(event: InputEvent):
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+
+func physics_update(delta: float):
+	if not character.is_on_floor():
+		character.velocity += character.get_gravity() * delta
+	character.move_and_slide()
+	var input_dir = Input.get_axis("ui_left","ui_right")
+	if input_dir != 0:
 		state_machine.change_state("walk_state")
-	elif Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		state_machine.change_state("jump_state")
-	pass

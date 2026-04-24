@@ -4,7 +4,7 @@ class_name jump_state
 const max_jumps : int= 200
 var jumps : int= 0
 
-func enter():
+func enter(data = {}):
 	if character.is_on_floor():
 		character.velocity.y = character.JUMP_VELOCITY
 		jumps = 1
@@ -29,8 +29,7 @@ func physics_update(delta: float):
 		character.sprite_2d.flip_h = false
 	
 	character.move_and_slide()
-	
-	
+
 
 	if character.is_on_floor() and character.velocity.y >= 0:
 		if direction != 0:
