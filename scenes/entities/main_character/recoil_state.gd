@@ -7,7 +7,6 @@ var char_dir: int
 var base_recoil = 1
 
 func enter(data = {}):
-	print("recoiled")
 	var recoil_strength = data.get("strength", base_recoil)
 	char_dir = character.dir
 	character.velocity.x = char_dir*recoil_strength*-1
@@ -17,7 +16,6 @@ func enter(data = {}):
 
 func exit():
 	recoil.stop()
-	print("leaving recoil")
 	character.sprite_2d.material.set_shader_parameter("blur_amount", 0.0)
 
 func physics_update(delta: float):

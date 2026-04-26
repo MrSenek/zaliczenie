@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d2mjccm3anqqf" path="res://scenes/entities/main_character/weapon_state_machine/weapon_state_machine.gd" id="8_2wsin"]
 [ext_resource type="Script" uid="uid://dlewp1catkqll" path="res://scenes/entities/main_character/recoil_state.gd" id="8_u6tu1"]
 [ext_resource type="Script" uid="uid://c2ojwy671pemo" path="res://scenes/entities/main_character/weapon_state_machine/fireball.gd" id="9_4ihrm"]
+[ext_resource type="Script" uid="uid://leqp3vfqvtpf" path="res://scenes/entities/main_character/dash_state.gd" id="10_4qou0"]
 [ext_resource type="Script" uid="uid://bnosu3ecy2tmv" path="res://scenes/entities/main_character/weapon_state_machine/electro.gd" id="11_oaeto"]
 [ext_resource type="Script" uid="uid://bg7iyd3vrehkq" path="res://scenes/entities/main_character/weapon_state_machine/line_2d.gd" id="12_rll1i"]
 [ext_resource type="Script" uid="uid://8durwr0pt5aw" path="res://scenes/entities/universal/weapons/missile_state.gd" id="13_0lvym"]
@@ -114,6 +115,9 @@ script = ExtResource("8_u6tu1")
 
 [node name="recoil" type="Timer" parent="state_machine/recoil_state" unique_id=1674664735]
 wait_time = 0.2
+
+[node name="dash_state" type="Node" parent="state_machine" unique_id=1997009307]
+script = ExtResource("10_4qou0")
 
 [node name="weapon_state_machine" type="Node2D" parent="." unique_id=2124445293 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_2wsin")
